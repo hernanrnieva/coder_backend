@@ -1,0 +1,65 @@
+NodeJS:
+
+    Entorno de tiempo de ejecución de JavaScript. Creaod por los desarrolladores originales de JS. Se basa en el motor de ejecución de JavaScript V8, el mismo que usa Chrome para convertir el JS en código máquina. Está escrito en C++ y dispone módulos nativos.
+
+    Ejecución desde un archivo js:
+
+        - Crear una carpeta de proyecto
+        - Abrir la carpeta con VSCode
+        - Crear un archivo llamado main.js
+        - Escribir código en este
+        - Abrir una terminal
+        - Ejecutarlo mediante la orden node main.js
+
+Módulos de JS:
+
+    Un módulo es un conjunto de funciones y objetos qde JS que las aplicaciones externas pueden usar
+    NodeJS posee varios módulos incorporados (nativos) compilados en binario. Estos están definidos en el código fuente de Node en la carpeta lib/
+    Los módulos básicos tienen la preferencia de cargarse primero si su identificador es pasado desde require(). Por ejemplo 'fs'
+
+Package Managers:
+
+    Los Packager Managers sirven para no tener que descargar, instalar y mantener las dependencias de un proyecto a mano
+    Estas aplicaciones facilitan la descarga e instalación de las librerías que utiliza el proyecto
+    Se necesita que se conozca el nombre exacto de la librería y versión, y contar con conexión a Internet
+    Mediante un comando se descargará de un repositorio centralizado la versión correspondiente de la dependencia especificada y se agregará al proyecto
+
+NPM:
+
+    Node cuanta con su propio administrador de paquetes (NPM)
+
+    Las dependencias se pueden instalar global o localmente
+    Si instalamos global, todos nuestros programas con NodeJS cuentan con esto (mala práctica, porque capaz no necesito todo)
+    Instalando globalmente podemos encontrarnos problemas con diferentes versiones de distintos métodos de distintas librerías y la jodemos
+
+package.json:
+
+    Es un archivo de ocnfiguración en formato JSON. Se crea mediante npm init
+    Se puede especificar en este archivo la lista de dependencias, que son las librerías que usar el proyecto para funcionar o realizar distintos tipos de testing
+
+Manejo automatizado de dependencias:
+
+    Siempre que se hayan especificado las dependencias en el .json se pueden actualizar y mantener fácil
+
+Versionado:
+
+    Las librearías de NPM sigue un estándar de versiona de tres números:
+
+        - Major release: cambia el primer número. Cambian de manera significativa el funcionamiento de las existentes
+        - Minor release: actualizaciones pequeñas que agregan cosas nuevas o actualizan algún detalle del funcionamiento de la librería
+        - Patches: tercer número. Corresponde a arreglos que corrigen defectos en las funcionalidades de la librería
+
+    Cada versión de la dependencia está precedido por diferentes módulos:
+
+        - virguilla: actualiza solo patches (cuando cambia el último número)
+        - circunflejo: actualiza solo patches y minor releases (cuando cambia el último o anteúltimo número)
+        - asterisco: actualiza cuando cambia cualquier cosas
+    
+    Otros símbolos:
+
+        - >: descargar/actualizar a cualquier versión posterior a la dada
+        - >: descargar/actualizar a cualquier versión posterior a la dada
+        - >: descargar/actualizar a cualquier versión posterior a la dada
+        - >: descargar/actualizar a cualquier versión posterior a la dada
+        - Si no se pone ningún símbolo, se usa solo la versión especificada
+        - Si en vez de poner una versión se pone "latest" se va a usar siempre la última

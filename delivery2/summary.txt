@@ -1,0 +1,59 @@
+Repaso:
+
+    Sincronismo: secuencial, la forma de programación convencional se podría decir
+    Función blooqueante vs. no bloqueante: cuando alguna instrucción intenta acceder a algún recurso externo puede tardar tiempo, por lo que podemos hacer que el sistema siga ejecutando cosas en paralelo, para que no se pierda tiempo. Las bloqueantes no, "bloquean" el flujo
+    Asincronismo: se deben usar adecuadamente. Se establece el orden en que empezarán las funciones pero NO en el que terminarán
+
+setTimeout: función nativa que recibe un callback y lo ejecuta después de un número específico de milisegundos. Trabaja sobre un modelo asíncrono no bloqueante:
+
+    setTimeout(function, ms, param1, param2){}
+
+setInterval: similar, solo que ejecuta una función y la vuelve a ejecutar después de un tiempo. Se continúa llamando hasta que se llame a clearInterval()
+
+    setInterval(cb, ms, parm1, param2){}
+
+Arrrrrrchivos:
+
+    Sirven para hacer "persistir" en el tiempo los datos que manejo en el programita. Pueden tener ventajas y desventajas obvio
+
+    Ventajas:
+
+        - Fáciles de usar
+        - No requieren programas externos
+        - Pueden ser abiertos y editados desde programas de edición de texto simples
+        - Fáciles de compartir
+
+    Desventajas:
+
+        - No puede guardarse toda la data en memoria
+        - Ediciones de datos puntuales
+        - Lecturas que combinen datos de varios archivos
+        - Podría considerarse el uso de un motor de base de datos
+
+    Módulo nativo file system: fs:
+
+        Es posible manipular archivos mediante fs (crear, leer, modificar, etc). La mayoría de las funciones del módulo se puede usar de forma sincrónica y asincrónica
+
+        Lo importamos con require('fs'), y de ahí lo guardamos en una constante (normalmente llamada fs)
+
+        FS en modo sincrónico:
+
+            - Las funciones terminan con "Sync"
+            - Son operaciones bloqueante que devuelve un resultado
+
+            Ejemplos:
+
+                - readFileSync
+                - writeFileSync
+
+            Lectura de un archivo:
+
+                fs.readFileSync(path, encoding). El formato que se va a usar normlamente va a ser 'utf-8'
+
+                ### Ojo con las rutas relativas. Si la ruta comienza con ./ se trata de una ruta relativa (parado desde donde estoy). Con / sólo es diferente
+
+        En modo asincrónico:
+
+            - Las funciones son las mismas sin el Sync al final
+            - Obviamente reciben un parámetro extra para el callback
+            

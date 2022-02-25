@@ -87,17 +87,17 @@ let id = 0
 const product1 = {
     title: 'Fiat Tipo',
     price: 15050.20,
-    thumbnail: 'thumb3'
+    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/b/b7/2016_Fiat_Tipo_Easy%2B_T-Jet_1.4_Front.jpg'
 }
 const product2 = {
     title: 'Fiat Duna',
-    price: 1000.05,
-    thumbnail: 'thumb4'
+    price: 1100.05,
+    thumbnail: 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Fiat_Duna601.png'
 }
 const product3 = {
     title: 'VW Suran',
-    price: 25000.3,
-    thumbnail: 'thumb5'
+    price: 25000.35,
+    thumbnail: 'https://fotos.perfil.com/2017/02/01/trim/1280/720/1-suran-track-02.png'
 }
 
 async function containterTests(){
@@ -122,6 +122,9 @@ async function containterTests(){
     await cont1.deleteById(4)
     products = await cont1.getAll()
     console.log('### Products after having deleted ID 4:', products)
+    await cont1.deleteById(1)
+    products = await cont1.getAll()
+    console.log('### Products after having deleted ID 1:', products)
     id = await cont1.save(product3)
     console.log(`### ID received after saving ${product3.title}: ${id}`)
     product = await cont1.getById(id)

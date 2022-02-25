@@ -80,7 +80,7 @@ class Container{
 }
 
 /* * * * * Tests * * * * */
-const cont1 = new Container('1.txt')
+const cont1 = new Container('cars.txt')
 let products = []
 let product = null 
 let id = 0

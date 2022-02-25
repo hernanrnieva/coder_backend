@@ -1,0 +1,1 @@
+[{"title": "Ford Focus","price": 10000.45,"thumbnail": "thumb1","id": 1},{"title": "Nissan 370Z","price": 15000.45,"thumbnail": "thumb2","id": 2}]

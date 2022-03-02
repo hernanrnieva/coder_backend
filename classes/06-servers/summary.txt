@@ -1,0 +1,26 @@
+Clase 06 - Servidores web
+
+    Módulo HTTP:
+
+        HTTP es un módulo nativo de Node.js. Trabaja con el protocolo HTTP. Nos va a servir para crear un servidor HTTP que  acepte solicitudes desde un cliente web. Se debe importar mediante require('http')
+        
+        Creando un server:
+
+            Declaro una const http. Sobre esta constante puedo importar varios métodos dentro del módulo, por ejemplo, createServer(). Este método recibe un callback que se ejecutará cada vez que el servidor reciba una petición. Llamando a respuesta.end() (siendo respuesta el segundo parámetro del callback), termino la petición y le envío los datos al cliente.
+
+            Usando server.listen(port, cb) le digo al server que escuche un determinado puerto. La función cb no es necesaria pero sirve para hacer cosas cuando el sv se haya iniciado y esté listo. Es normal indicar que el sv está listo y escuchando determinado puerto
+
+    Express:
+
+        A pesar de que NodeJS cuenta con módulos nativos para manejar envío y recepción de peticiones de tipo http, vamos a usar Express. Características:
+
+            - Popular y fácil
+            - Facilita crear puntos de entrada a nuestro sv
+            - Permite personalizar la manera en que se maneja cada petición más fácil y rápido
+
+        Es un framework minimalista. Uso:
+
+            - Inicialización: declaro la const express y llamo a const app = express()
+            - Conexión al sv: declaro el puerto y un server, al que le asigno app.liste(PORT, cb), con cb siendo la función a mostrar cuando levanto el sv
+            - Errores de conexión: se puede configurar el evento "error" a través del método "on" sobre la salida de listen(). Hago server.on("error", error => console.log('Error: ${error}'))
+            - Petición get: uso el método app.get('/path', (req, res) => {función, con res.send() siendo lo que finaliza la petición})

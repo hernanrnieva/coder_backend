@@ -1,0 +1,110 @@
+Clase 07 - Express avanzado
+
+Aplicaciones RESTful:
+
+    Son aplicaciones que operan en forma de servicios web, respondiendo consultas a otros sitemas a través de internet. Dichas aplicaciones lo hacen respetando reglas y convenciones que se ven a continuación.
+
+Protocolo HTTP:
+
+    Hypertext Transfer Protocol. Sirve para intercambiar datos a través de internet. See basa en un esquema de petición-respuesta. Existen clientes que realizan solicitudes de transmisión de datos, y un servidor que atiende las peticiones. Establece varios tipos de peticiones, siendo las principales: POST, GET, PUT, y DELETE
+
+    Pasos de una comunicación HTTP:
+
+        1. La computadora cliente solicita una información a una página web
+        2. El servidor entiende que recibe una solicitud HTTP y provee una respuesta
+        3. El cliente interpreta el código recibido y hace lo que sea necesario
+
+    Códigos de estado:
+
+        1xx - informativo: la petición se recibió, y continúa su procesamiento
+        2xx - éxito: la petición se recibió con éxito, se comprendió, y se procesó
+        3xx - redirección: más acciones se requieren
+        4xx - error del cliente: la petición tiene algún error y no se puede procesar
+        5xx - error del servidor: el servidor falló al intentar procesar una petición aparentemente válida
+
+Qué es una API?
+
+    Conjunto de reglas y especificaciones que describen la manera en que un sistema se puede comunicar con otros. Definir una en forma clara  explícita habilita y facilita el intercambio de info entre sistemas. Permite la colaboración e interoperatibilidad entre los sistemas desarrollados en distintas plataformas y/o lenguajes. Puede tener interfaz gráfica o ser de uso interno. Debe estar acompañada con documentación que describa la operación y el formato de interacción con la misma
+
+REST:
+
+    Viene de Representational State Transfer.
+
+    Representación: modelo o estructura con la que se representa algo
+    Estado: hablamos de los datos que contiene ese modelo estructura
+    
+    Transferir un Estado de Representación implica el envío de datos (con una determinada estructura) entre dos partes
+
+    Los datos más usados para estas transferencias son JSON y XML
+
+APIs REST:
+
+    Tipo de API que no dispone interfaz gráfica, para comunicación entres sistemas con protocolo HTTP. Para que una API sea REST, tiene que cumplir:
+
+        Arquitectura cliente y servidor sin estado: cada mensaje HTTP contiene toda la info necesaria para comprender la petición. Por esto, ni el cliente ni el servidor necesitan recordar ningún estado de las comunicaciones entre mensajes. Esta restricción mantiene al cliente y al servidor débilemente acoplados, y aislados
+
+        Cacheable: debe poder almacenarse en caché. Debe soportar una caché de varios niveles. Evita repetir conexiones entre el servidor y el cliente, en casos de que peticiones idénticas fueran a generar la misma respuesta
+
+        Operaciones comunes: todos los recursos detrás de la API deben poder ser consumidos mediante peticiones HTTP, preferentemente sus principales (GET, POST, PUT y DELETE). Con frecuencia estas ops se equiparan a las operaciones CRUD en databases (Create, Read, Update y Delete). Al tratarse de HTTP, deben devolver con sus respuestas códigos de estados
+
+        Interfaz uniforme: cada acción debe contar con una URI, un identificador único. Facilita el acceso a la info, pero también para compartir su ubicación exacta a terceros
+
+        Utilización de hipermedios: cada vez que se hace un request y se devulve una respuesta, parte de la info puede ser también un hipervínculo de navegación asociada a otros recursos del cliente. Por esto, se puede navegar de un recurso REST a muchos otros, siguiendo enlaces sin requerir el uso de registros u otra infraestructura adicional
+
+APIs RESTful:
+
+    Requiere un enfoque de diseño distinto a la forma típica de pensar en un sistema (RPC). Remote Procedure Calls, basa su funcionamiento en las operaciones que puede utilizar el sistema (acciones, verbos, etc). En REST, el énfasis se pone en los recursos (usualmente sustantivos), especialmente en los nombres que se le asigna a cada tipo de recurso. CAda funcionalidad relacionada con este recurso tendría sus propios identificadores y peticiones en HTTP
+
+    Por ejemplo:
+
+        Listar usuarios: petición HTTP de tipo GET a la URL:
+            http://servicio/api/usuarios
+
+        Agregar usuario: petición HTTP de tipo POST a la URL:
+            http://servicio/api/usuarios (agregando a la petición el registro correspondiente a los datos del nuevo usuario)
+        
+        Obtener al usuario 1: en caso de querer acceder a un elemento particular en un recurso, se lo puede hacer fácil si se conoce su identificador (URI). Petición HTTP de tipo GET a la URL:
+        http://servicio/api/usuarios/1
+        
+        Modificar al usuario 1: se descarga el registro anterior usando get, se modifica, y se lo envía utilizando una petición HTTP de tipo PUT a la URL:
+        http://servicio/api/usuarios/1
+        
+        Obtener usuarios con domicilio en CABA: se pueden enviar parámetros en una petición HTTP, de la manera:
+        http://servicio/api/usuarios?domicilio=CABA
+
+Express: atención de peticiones
+
+    Para definir cómo se debe manejar cada petición de va a usar los métodos: get(), post(), etc. Todos reciben como promer arg la ruta que van a estar escuchando, y solo manejarán peticiones que coincidan en ruta y en tipo. Luego, el segundo argumenta será el callback con el que se manejará la petición
+    Esta tendrá dos parámetros: el primero con la petición en sí, y el segundo con la respuesta quie espera devolver
+
+    Petición GET con parámetro de búsqueda: 
+
+        Los parámetros se agregan al final de la URL, con un signo ? y enumerando pares 'clave=valor' y ampersand si hay más de uno.
+        Al recibirlos, los mismo se encontrarán en el objeto 'query' dentro del objeto requerir
+
+    Petición GET con identificador:
+
+        Se escribe el identificador unívoco en la URL, luego del nombre del recurso, separado por una barra. Express usa una sitaxis que permite idicar anteponiendo ':' antes del nombre del campo identificador, al especificar la ruta escuchada. Luego para acceder al valor del mismo, se hace a través del campo 'params' del objeto req
+
+    Petición POST:
+
+        Algunas peticiones requieren el envío de algún dato desde el cliente hacia el servidor, con POST por ejemplo. Para acceder al cuerpo del mensaje, se hace a través del campo 'body' del objeto petición recibido. En este caso devolvemos como respuesta el mismo registro que se envió en la petición
+
+    Petición PUT (actualizar):
+
+        En este se debe actualizar un registro nuevo. Se debe proveer el identificador del registro a reemplazar y el dato con el que se lo quiere sobreescribir
+
+    Petición DELETE:
+
+        Se debe identificar unívocamente el recurso sobre el cual se quiere hacer la operación
+
+Configuración extra:
+
+    Para que nuestro servidor express pueda interpretar en forma automática mensajes de tipo JSON en formato urlencoded al recibirlos, debemos indicarlos en forma explícita, agregando las siguientes líneas luego de crearlo:
+
+        app.use(express.json())
+        app.use(express.urlencoded({extended: true}))
+
+POSTMAN:
+
+    Nace como herramiento que permite crear peticiones sobre APIs sencillamente, para probarlas. el usuario puede ser un desarrollador que esté comprobando el funcionamiento de una API

@@ -15,7 +15,20 @@ const server = app.listen(PORT, () =>
 server.on('error', (error) => console.log('An error has occured: ${error}'))
 
 /* Product router implementation */
+const PRODUCT_KEYS = 3
 let products = []
+
+const validateProduct = (product) => {
+    let keys = Object.keys(product).length
+    console.log(keys)
+    if(keys != PRODUCT_KEYS)
+        throw 'Object does not have the correct amount of properties'
+
+    if(!product.hasOwnProperty('title') || !product.hasOwnProperty('price') || !product.hasOwnProperty('thumbnail'))
+        throw 'Object does not have the correct properties'
+
+    return product
+}
 
 router.get('/', (req, res) => {
     if(products.length != 0)
@@ -33,7 +46,12 @@ router.get('/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    let newProduct = req.body
+    let newProduct
+    try{
+        newProduct = validateProduct(req.body)
+    }catch(e){
+        res.json(e)
+    } 
     let newId = products.length == 0 ? 1 : products[products.length - 1].id + 1
     newProduct["id"] = newId
     newProduct.price = parseFloat(req.body.price)
@@ -43,11 +61,16 @@ router.post('/', (req, res) => {
 })
 
 router.put('/:id', (req, res) => {
-    let index = products.findIndex(p => p.id == req.params.id)
+    let index = products.findIndex(p => p.id == parseInt(req.params.id))
     if(index == -1)
         res.json({error: `Product ${req.params.id} not found to be updated`})
 
-    let newProduct = req.body
+    let newProduct
+    try{
+        newProduct = validateProduct(req.body)
+    }catch(e){
+        res.json(e)
+    }
     newProduct["id"] = parseInt(req.params.id)
     products[index] = newProduct
 

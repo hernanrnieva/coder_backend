@@ -1,0 +1,30 @@
+Clase 08 - Router & Multer
+
+Express Router: es una forma de enrutar
+
+    Se usa para crear un objeto para enrutar solicitudes. Es una instantcia aislada de middleware y rutas. El de express nos permite crear múltiples 'mini aplicaciones' para que se pueda asignar un espacio de nombre al api público, autenticación y otras rutas en sistema de enrutamiento separados
+
+    Básicamente le paso todos los métodos al router, y a la api le dice que use un determinado prefijo, más router, que va a tener todas las otras urls. A nivel cliente es INVISIBLE
+
+Servicio de archivos estáticos:
+
+    Muchas veces tengo que enviar enlaces, archivos, htmls, etc. Hay una función middleware para hacer esto:
+
+    express.static
+
+    Recibe como parámetro el nombre del directorio con los archivos estáticos. Hacemos app.use(express.static('public')). Ahí van a ir los archivos públicos que podrá solicitar el cliente. También puede usarse varias veces con varias carpetas. Para evitar problemas (ya que el path proporcionado a la función puede ser relativo al directorio desde donde se inicia node), podemos evitar problemas usando:
+
+    app.use('/static', express.static(__dirname + '/public'))
+
+Middlewares:
+
+    Básicamente son funciones que se pueden ejecutar durante el flujo de request response. Tienen acceso al objeto req, res, y next. Ejemplos: ver si un usuario está logueado correctamente (de ahí digo next para ejecutar el siguiente middleware); un log que asiente que un usuario pidió algo; se envía la respuesta
+
+    Se debe invocar a next para pasar el control al siguiente middleware. Los middlewares se agregan después del app.get/app.use/etc. Pueden usarse o no a nivel de ruta. También puede estar a nivel de router. También existen middlewares de terceros que se pueden incorporar al código
+
+Multers:
+
+    Cuando un cliente web sube un archivo a un server, generalmente lo hace a través de un form, codificado como mulipart/form-data. Multer hace que sea más fácil manipular este formato cuando se suben archivos.
+
+        - Es un middleware para Express
+        - Actúa como ayudante al cargar archivos

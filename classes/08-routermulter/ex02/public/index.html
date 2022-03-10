@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload pets and people</title>
+</head>
+<body>
+    <h2>Input pet</h2>
+    <form action="/pets" method="POST">
+        Name:<input type="text" name="name"/>
+        Breed:<input type="text" name="breed"/>
+        Age:<input type="text" name="age"/>
+        <button>Send</button>
+    </form>
+    
+    <br/>
+    <hr/>
+
+    <h2>Input person</h2>
+    <form action="/people" method="POST">
+        Name:<input type="text" name="name"/>
+        Age:<input type="text" name="age"/>
+        <button>Send</button>
+    </form>
+</body>
+</html>

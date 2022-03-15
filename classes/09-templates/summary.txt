@@ -1,0 +1,44 @@
+Clase 09 - Motores de plantillas
+
+Sirven para separar los datos de su presentación. Para decirlo en términos web, separar el código del programadorde de el del diseñador.
+
+Un motor de plantila lee un archivo de texto (plantilla) que contiene la presentación ya preparada en un lenguaje Pseudo HTML, e insrta la información dinamica en él (ordenada por el controlador). La sintaxis a utilizar depende del motor de plantillas. Suelen tener un pequeño lenguaje de script que permite generar el código dinámico
+
+    Ventajas:
+
+    - El código es más organizada, y no habrá HTML fiero
+    - Se separa el equipo en datos
+    - Permite reutilizar código
+    - Mejoran la interacción de la parte visual de las appas
+    - Se pueden separr, optimizar, y organizar mejor el código
+
+    Desventajas de no utilizarlos:
+
+    - Afecta la velocidad
+    - HTML mal formateado es probable
+    - Cógido resultante difícil de documentar
+    - Se acopla todo más
+
+Handlebars:
+
+    Lenaguaje de plantillas simple. Utiliza una plantilla y un objeto de entrada para generar HTML. Tienen el aspecto de texto normal con expresiones Handlebars incrustadas.
+    Ejemplo de una expresión de Handlebars: {{ + algunos contenidos + }}
+    Cuando se ejecuta la plantilla, las expresiones se reemplazan con algún objeto de entrada.
+
+Motores de plantillas para Express:
+
+    Creando uno propio:
+
+        Se usa el método app.engine(ext, cb). Ext hace referencia a la extensión del archivo, y cb es la función de motor de plantilla, que acepta como parámetros la ubicación del archivo, el objeto options, y la función de cb.
+
+        El método app.set('views', path) especifica la carpeta de plantillas
+
+        El método app.set('view engine', name) registra el motor de plantillas
+
+        # Se necesita requerir fs
+
+Handlebars en express:
+
+    Handlebars puede funcionar desde dos lados: cliente y servidor. (Cliente fue por ejemplo el ejercicio 1). Esta versatilidad está buena porque puede adaptarse a la página dependiendo del tipo que esta sea.
+
+    Para el lado del server se usa npm install express-handlebars

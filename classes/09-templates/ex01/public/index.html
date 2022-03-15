@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <span></span> <!-- Tag to enter the template in -->
+    <!-- Handlebars inclusion -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script>
+        const template = Handlebars.compile(`
+        <h1>Personal Data</h1>
+        <ul>
+            <li>{{name}}</li>
+            <li>{{lastname}}</li>
+            <li>{{age}}</li>
+            <li>{{email}}</li>
+            <li>{{phone}}</li>
+        </ul>
+        `); // Compilation
+        const html = template({
+            name: 'Pedro',
+            lastname: 'Nieva',
+            age: 22,
+            email: 'hernanrnieva@gmail.com',
+            phone: 1130901857,
+        }); // HTML generation
+        document.querySelector('span').innerHTML = html; // View inyection of the HTML in the selected tag
+    </script>
+</body>
+</html>

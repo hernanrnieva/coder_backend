@@ -1,0 +1,21 @@
+Clase 10 - Pugs y EJS
+
+Pugs:
+
+    Motorde plantillas que permite utilizar archivos estáticos como plantillas, enviar valores para reemplazar variables, y transformar estos archivos en páginas HTML. Se puede trabajar con él en Express. Es súper fácil de implementar.
+
+    Se instala con npm install pug.
+
+    Configuración:
+
+        Se crea un directorio en root para guardar las plantillas (views normlamente). Después se le aclara a express que su motor será pugs y su carpeta de views será justamente views
+    
+    Sintaxis:
+
+        No es necesario abrir y cerrar etiquetas, usa solo la tabulación
+
+        Docs: https://www.google.com/url?q=https://pugjs.org/api/getting-started.html&sa=D&source=editors&ust=1647463652158406&usg=AOvVaw2sQHTgx2HBczz41CAb8Be1
+
+    Seguimos:
+
+        Se modifica la ruta "/hello", o la que se quiera, se le manda la plantilla mediante render 

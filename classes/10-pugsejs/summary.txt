@@ -19,3 +19,20 @@ Pugs:
     Seguimos:
 
         Se modifica la ruta "/hello", o la que se quiera, se le manda la plantilla mediante render 
+
+EJS:
+
+    Efective Javascript templating. Es de los motores de visualización temáticos mas populares para node y express. Se puede usar tanto desde el front como el back. Es fácil de configurar y podemos incluir las partes repetibles de nuestro sitio (parciales) y pasar los datos a nuestras vistas. Se hace toooodo igual que con pugs (instalación, seteo de views, etc). NO HACE FALTA DECLARAR LA CARPETA DE VIEWS con app.set()
+
+    Sintaxis:
+
+        Usando:
+
+            - <%= incrusta en la plantilla el valor tal cual está
+            - <%- incrusta en la plantilla el valor renderizado como HTML
+            - <% 'Scriptlet': admite instrucciones en JS para declaración de variables y control de flujo
+
+        Partials a la vista principal:
+
+            - Utilizando <%- include('pathtofile) %> para integrar un parcial de EJS en otro archivos
+            - El guión <%- en lugar de solo <% es para indicar que renderice HTML sin formato

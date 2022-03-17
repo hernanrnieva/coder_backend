@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body>
+    <div class="container mt-3">
+        <div class="jumbotron">
+            <h1 style="color: blue">Insert product data</h1>
+            <br>
+            <form action="/products" method="post">
+                <div class="form-group">
+                    <label for="title"><b>Title</b></label>
+                    <input id="title" class="form-control" type="text" name="title" required/>
+                </div>
+                <div class="form-group">
+                    <label for="price"><b>Price</b></label>
+                    <input id="price" class="form-control" type="text" name="price" required/>
+                </div>
+                <div class="form-group">
+                    <label for="thumbnail"><b>Thumbnail</b></label>
+                    <input id="thumbnail" class="form-control" type="text" name="thumbnail" required/>
+                </div>
+                <button class="btn btn-success mt-3 mb-5">Submit</button>
+                <span><a href="./products"><button type="button" class="btn btn-secondary mt-3 mb-5">See loaded products</button></a></span>
+            </form>
+        </div>
+    </div>
+</body>
+{{> footer}}

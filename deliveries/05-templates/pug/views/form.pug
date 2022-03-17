@@ -1,0 +1,27 @@
+doctype html
+html
+    include partials/header.pug
+    body
+        div(class="container mt-3")
+            div(class="jumbotron")
+                h1(style="color: blue") Insert product data
+                br
+                form(action="/products" method="post")
+                    div(class="form-group")
+                        label(for="title")
+                            b Title
+                        input(id="title" class="form-control" type="text" name="title" required)
+
+                    div(class="form-group")
+                        label(for="price")
+                            b Price
+                        input(id="price" class="form-control" type="text" name="price" required)
+
+                    div(class="form-group")
+                        label(for="thumbnail")
+                            b Thumbnail
+                        input(id="thumbnail" class="form-control" type="text" name="thumbnail" required)
+
+                    button(class="btn btn-success mt-3 mb-5") Submit
+                    a(href="./products") 
+                        button(type="button" class="btn btn-secondary mt-3 mb-5") See loaded products

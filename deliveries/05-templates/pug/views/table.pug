@@ -1,0 +1,25 @@
+doctype html
+html
+    include partials/header.pug
+    body
+        div(class="container mt-3")
+            if products.length != 0
+                div(class="table-responsive")
+                    table(class="table table-dark")
+                        tr(style="color: yellow;")
+                            th Title
+                            th Price
+                            th Thumbnail
+                        each p in products
+                            tr(class="text-centered")
+                                td= p.title
+                                td= p.price
+                                td
+                                    img(src=p.thumbnail alt="" width="40px")
+
+            else 
+                h3(class="p-3" style="color: crimson; background-color: pink;") No data exists            
+
+            a(href="./productsb") 
+                button(class="btn btn-success mt-3 mb-5") Add new products
+

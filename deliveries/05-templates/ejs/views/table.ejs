@@ -1,0 +1,27 @@
+<%- include('./partials/header.ejs') %>
+<body>
+    <div class="container mt-3">
+        <% if(products.length != 0) { %>
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <tr style="color: yellow;">
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Thumbnail</th>
+                    </tr>
+                    <% for(const i in products) { %>
+                        <tr class="text-centered">
+                            <td><%=products[i].title%></td>
+                            <td><%=products[i].price%></td>
+                            <td><img src="<%=products[i].thumbnail%>" alt="" width="40px"></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        <% }else{ %>
+            <h3 class="p-3" style="color: crimson; background-color: pink;">No data exists</h3>
+        <% } %>
+        <a href="./productsb"><button class="btn btn-success mt-3 mb-5">Add new products</button></a>
+    </div>
+</body>
+<%- include('./partials/footer.ejs') %>

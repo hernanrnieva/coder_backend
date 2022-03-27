@@ -1,0 +1,56 @@
+Clase 11 - Websockets
+
+Websocket:
+
+    Protocolo de red basado en TCP, que establece como cambiar datos entre redes. Es fiable y eficiente. El protocolo TCP establece conexiones entre dos puntos finales llamados sockets. Acá el intercambio se produce en dos direcciones (conexión bidireccional). Una ventaja es que se accede más rápido a los datos. Permite la comunicación instantánea y en tiempo real
+
+    Básicamente se hace un handshake entre en cliente y el servidor, y a partir de ahí se pueden hacer banda de cosas.
+
+    Cómo se accede a una página Web SIN WS?
+
+        La transmisión es mediante HTTP. El protocolo transmite datos y hace posible la carga de páginas web en el navegador. El cliente envía, con cada acción, una solicitud al servidor, y recién ahí el servidor responde. Es un patrón rígido de solicitud y respuesta que provoca largos tiempos de espera
+    
+    Principios de WS:
+
+        Permitió por primera vez acceder a una web de forma dinámica en tiempo real. Se realiza un handshake y después hay 'conexión constante'. Con este hs, el cliente envía al sv toda la info necesaria. El canal de comunicación ya queda abierto. El cliente puede activarse por sí mismo y pone a disposición toda la info. al cliente, sin necesidad de recibir una solicitud nueva. Las notificacions push de las páginas funcionan así
+
+        En resumen, puede decirse que es un canal de comunicación abierto constantemente, que uqeda activo después de darse un handshake
+
+    Detalle de intercambio de datos:
+
+        El cliente envía una solicitud, igual que con HTTP. Pero la conexión se establece mediante TCP y queda abierta. El servidor también responde. Se define el prefijo ws y wss (análogos a http y https)
+
+    Usos:
+
+        - Conexión de forma rápida (chats, tickers de noticias o updates de bolsa, mensajería instantánea, etc)
+
+    Desventajas de HTTP a nivel chat:
+
+        - El cliente siempre carga la página HTML ENTERA
+        - Para solucionar esto se usa la tecnología AJAX, pero esto trae la desventaja de usar conexiones unidireccionales. Esto desencadenaría largos tiempos de espera
+
+    Ventajas de WS:
+
+        - Conexiones bidireccionales
+        - Tiempos de espera nulos
+    
+    ##### Ninguno sustituye al otro, simplemente conviven ######
+
+    SOCKET.IO:
+
+        Bibilioteca JS para aplicaciones web en tiempo real. Módulo de Node básicamente. Tiene dos partes:
+
+            - Parte del lado del cliente ejecutado desde navegador
+            - Parte del lado del sv para NodeJS
+
+        Impulsado por eventos
+
+        Características:
+
+            - Utiliza el protocolo Websocket
+            - Se puede usar como un contenedor para WS
+            - Se puede instalar con npm
+            - Es fiable
+            - Soporta reconexión automática (el cliente siempre reintenta hasta que el servidor esté disponible)
+            - Detecta desconexión, para que el servidor y el cliente sepan cuando el otro no responde
+            - Se puede emitir cualqueir estructura de datos serializable: ArrayBuffer y Blobl en el navegador y en Node.js

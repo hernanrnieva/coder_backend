@@ -1,1 +1,5 @@
 Clase 12 - Chat con websockets
+
+Recordando:
+
+    Los websocket son uan tech que permite comunicación bidireccional entre cliente y servidor, sobre un sv socket TCP

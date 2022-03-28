@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Intro to WebSocket clients</title>
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./js/main.js"></script>
+</head>
+<body>
+    <h1>Intro to WebSockets clients</h1>
+    <!-- <input id="inputText" type="text" required></input>
+    <input type="button" onclick="sendM()" value="send"></input>
+    <p id="ph"></p> -->
+    <div id="messages"></div>
+    <form onsubmit="return addMessage(this)">
+        <input type="text" id="username" placeholder="Your name">
+        <input type="text" id="message" placeholder="Your message">
+        <input type="submit" value="send">
+    </form>
+</body>
+</html>

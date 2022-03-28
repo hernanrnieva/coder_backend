@@ -1,6 +1,6 @@
 const express = require('express')
 /* Weird way of importing 
-const {methog: variableName} = require('module') */
+const {method: variableName} = require('module') */
 const {Server: IOServer} = require('socket.io')
 const {Server: HTTPServer} = require('http')
 const app = express()

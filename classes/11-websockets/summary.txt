@@ -54,3 +54,16 @@ Websocket:
             - Soporta reconexión automática (el cliente siempre reintenta hasta que el servidor esté disponible)
             - Detecta desconexión, para que el servidor y el cliente sepan cuando el otro no responde
             - Se puede emitir cualqueir estructura de datos serializable: ArrayBuffer y Blobl en el navegador y en Node.js
+
+    Intro general:
+
+        Socket.IO permite la comunicación bidireccional basada en eventos en tiempo real. Consiste en:
+
+            - Un servidor Node.js
+            - Una librería cliente de JS para el navegador o un cliente Node.js
+        
+        Pasos:
+
+            1. Se crea el directorio de trabajo y se instala socket.io y express
+            2. Una vez instalados se crean files index.html y server.js
+            3. Crearemos una carpeta donde se agregará un index.js y un style.css

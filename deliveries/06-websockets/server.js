@@ -1,4 +1,6 @@
 const express = require('express')
+const hbs = require('handlebars')
+const fs = require('fs')
 const handlebars = require('express-handlebars')
 const {Server: IOServer} = require('socket.io')
 const {Server: HTTPServer} = require('http')
@@ -27,7 +29,11 @@ app.set('views', './public/views')
 app.set('view engine', 'hbs')
         
 const PRODUCT_KEYS = 3
-const products = []
+let products = [
+]
+
+const fileContent = fs.readFileSync('./public/views/partials/table.hbs').toString()
+let template = hbs.compile(fileContent)
 
 const validateProduct = (product) => {
     let keys = Object.keys(product).length
@@ -44,32 +50,13 @@ app.get('/products', (req, res) => {
     res.render('layouts/main', {products})
 })
 
-app.post('/products', (req, res) => {
-    let newProduct
-    try{
-        newProduct = validateProduct(req.body)
-    }catch(e){
-        // TODO: add error handling or notification to client
-        res.render('layouts/main', {products})
-    }
-    let newId = products.length == 0 ? 1 : products[products.length - 1].id + 1
-    newProduct["id"] = newId
-    newProduct.price = parseFloat(req.body.price).toFixed(2)
-    products.push(newProduct)
-
-    res.render('layouts/main', {products})
-})
-
 const messages = [
-    {email: 'hernanrnieva@gmail.com', date: new Date().toLocaleString(), text: 'Hello there!'},
-    {email: 'juliannieva@gmail.com', date: new Date().toLocaleString(), text: 'Hi'},
-    {email: 'pc@gmail.com', date: new Date().toLocaleString(), text: 'How is it going?'},
-    {email: 'hernanrnieva@gmail.com', date: new Date().toLocaleString(), text: 'Fine, and you guys?'}
 ]
 
 io.on('connection', (socket) => {
     console.log('A user has connected')
-    socket.emit('product', products)
+    socket.emit('product', template({products}))
+    // TODO: add message persistence
     socket.emit('message', messages)
 
     socket.on('product', (data) => {
@@ -78,18 +65,19 @@ io.on('connection', (socket) => {
             newProduct = validateProduct(data)
         }catch(e){
             // TODO: add error handling or notification to client
-            console.log('Erorr found with product received')
+            console.log('Error found with product received')
         }
         let newId = products.length == 0 ? 1 : products[products.length - 1].id + 1
         newProduct["id"] = newId
-        newProduct.price = parseFloat(req.body.price).toFixed(2)
+        newProduct.price = data.price
         products.push(newProduct)
-        io.sockets.emit('product', products)
+        io.sockets.emit('product', template({products}))
     })
 
     socket.on('message', (data) => {
         data["date"] = new Date().toLocaleString()
         messages.push(data)
+        // TODO: add message persistence
         io.sockets.emit('message', messages)
     })
 })

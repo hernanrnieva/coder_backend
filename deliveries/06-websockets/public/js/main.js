@@ -1,8 +1,21 @@
 const socket = io()
 
-const updatePh = (data) => {document.getElementById('ph').innerHTML = JSON.stringify(data, null, 2)}
+function renderProduct(data) {
+    const html = data.map((m, index) => {
+        return(`<div><p style="color: brown">
+            <b style="color: blue">${m.email}</b>:
+            ${m.date} 
+            <i style="color: green">${m.text}</i>
+        </p></div>`)
+    }).join(' ')
+    document.getElementById('messages').innerHTML = html
+}
 
-function render(data) {
+socket.on('product', (data) => {
+    document.getElementById('products').innerHTML = data 
+})
+
+function renderMessage(data) {
     const html = data.map((m, index) => {
         return(`<div><p style="color: brown">
             <b style="color: blue">${m.email}</b>:
@@ -14,7 +27,7 @@ function render(data) {
 }
 
 socket.on('message', (data) => {
-    render(data)
+    renderMessage(data)
 })
 
 function addMessage(e) {
@@ -23,5 +36,16 @@ function addMessage(e) {
         text: document.getElementById('message').value
     }
     socket.emit('message', message)
+    return false
+}
+
+function addProduct(e) {
+    const product = {
+        title: document.getElementById('title').value,
+        price: document.getElementById('price').value,
+        thumbnail: document.getElementById('thumbnail').value
+    }
+    console.log('hi')
+    socket.emit('product', product)
     return false
 }

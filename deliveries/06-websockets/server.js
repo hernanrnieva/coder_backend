@@ -29,8 +29,7 @@ app.set('views', './public/views')
 app.set('view engine', 'hbs')
         
 const PRODUCT_KEYS = 3
-let products = [
-]
+const products = []
 
 const fileContent = fs.readFileSync('./public/views/partials/table.hbs').toString()
 let template = hbs.compile(fileContent)
@@ -50,13 +49,15 @@ app.get('/products', (req, res) => {
     res.render('layouts/main', {products})
 })
 
-const messages = [
-]
+let messages = []
 
 io.on('connection', (socket) => {
     console.log('A user has connected')
     socket.emit('product', template({products}))
     // TODO: add message persistence
+    try {
+        messages = JSON.parse(fs.readFileSync('messages.txt', 'utf-8'))
+    } catch(e) {}
     socket.emit('message', messages)
 
     socket.on('product', (data) => {
@@ -77,7 +78,7 @@ io.on('connection', (socket) => {
     socket.on('message', (data) => {
         data["date"] = new Date().toLocaleString()
         messages.push(data)
-        // TODO: add message persistence
+        fs.writeFileSync('messages.txt', JSON.stringify(messages))
         io.sockets.emit('message', messages)
     })
 })

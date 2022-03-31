@@ -33,7 +33,7 @@ socket.on('message', (data) => {
 function addMessage(e) {
     const message = {
         email: document.getElementById('email').value,
-        text: document.getElementById('message').value
+        text: document.getElementById('text').value
     }
     socket.emit('message', message)
     return false

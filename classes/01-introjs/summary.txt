@@ -1,0 +1,88 @@
+Clase 1 - Principios básicos de Javascript
+
+Tipos de “pasaje”:
+
+    valor: básicamente similar a C. si paso la variable por valor y la modifico en la función, la copia original está chill
+    referencia: si se toca al valor de la variable en la función, se afecta al contenido del objeto. ADEMÁS, cuando yo paso un objeto paso LA REFERENCIA, si lo toco desde otro lado, se van a modificar todas la variables que hagan uso de ese objeto
+
+Funciones en JS:
+
+    function nombre([param[,param[,... param) {
+        instrucciones
+
+    nombre: nombre de la función. Se puede omitir, en este caso es “anónima”
+    param: parámetro, nombre de un argumento que se le pasará a la función. Puede tener hasta 255
+    instrucciones: son las instrucciones que forman el cuerpo de la función
+
+    Las funciones anónimas se almacenan en la memoria, pero el tiempo de ejecución no crea automáticamente una referencia a la misma. Son útiles en varios casos 
+
+    Puedo por ejemplo:
+
+    Funciones IIFE: (Inmediately Invoked Function Expressions), que se ejecutan cuando se definen. Se componen por:
+
+función anónima con alcance léxico encerrado por el operador de agrupación
+expresión de función cuya ejecución es inmediata:
+
+Scopes:
+
+    Indican el ámbito o alcance actual de ejecución. Se pueden superponer, y no puedo acceder desde los primarios a los “secundarios”, sí al revés.
+
+Closure:
+
+    Una clausura es una función que guarda referencias del estado adyacente (ámbito léxico). En otras palabras, deja acceder al ámbito de una función exterior desde una interior. Las clausuras se crean cada vez que se crea una función
+
+El entorno está formado por las variables locales que estaban dentro del alcance en el momento creado el closure. gritarCH es un closure que incorpora la función anónima, junto con el parámetro nombre y el string “!!!”, que existían cuando se creó
+
+Template string:
+
+    Son plantillas de texto, incrustadas en el código fuente, que permiten su interpolación mediante expresiones:
+
+        ´Hola ${expresión bla bla bla’´
+
+    Utilizan las comillas invertidas para delimitar las cadenas, en vez de las dobles
+    Si se utiliza ${ se habilita la interpolación. Pueden ejecutar código en su interior
+    Soportan texto multilínea, manteniendo el formato introducido (incluyendo saltos de línea y tabulaciones)
+
+Clases:
+
+    Molde para un objeto, para luego volver a usarlo en otras instancias. Declaración:
+
+    class Cliente {
+    
+        constructor(nopmbre, fecha, direccion){
+            
+            this.nombre = nombre;
+            this.fechaNacimiento = fecha;
+            this.direccion = direccion;
+
+El contenido de las clases es la parte que se encuentra entre las llaves (métodos y atributos)
+Posee un método constructor donde se declara los atributos usando la palabra this
+Un constructor puede usar la palabra reservada super para llamar al constructor de una superclase
+Las clases son sólo azúcar sintáctica, es decir, no son una nueva funcionalidad, solo una nueva manera de escribir lo que antes ya se podía pero de otra manera más mantenible y menos convencional.
+
+    Ejemplo de clase Persona:
+
+    class Persona {
+        constructor(nombre, edad) {
+            this.nombre = nombre
+            this.edad = edad
+
+    static saludoCorto = ‘hola’ *** el método estático es de clase, indiferente de las instancias
+
+    saludoCompleto() {
+        console.log(´bueeeeenas, soy´${this.nombre
+
+    saludoEstatico() {
+        console.log(Perosna.saludoCorto)
+
+Funcionamiento de clase:
+
+    El operador new permite crear una instancia de un tipo de objeto definido por el usuario. Se utiliza sobre una clase. Realiza 3 tareas en la construcción:
+
+Crea un objeto vacío
+Ejecuta el constructor de la clase en el contexto del objeto creado
+Retorna el objeto
+
+     const ejemploP = new Persona(‘pepe’, 5)
+
+    console.log(ejemploP) *** me va a mostrar todos los datos de la persona

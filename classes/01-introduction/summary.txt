@@ -1,0 +1,71 @@
+Clase 0 - Introducción al desarrollo back-end
+
+Proyecto final:
+
+    Desarrollo de back-end de una aplicación de e-commerce para poder vender productos de un rubro a elección.
+    El servidor se basará en un diseño en capas, orientado a MVC, y su código contendrá modernas estructuras de programación del lenguaje ECMAScript
+    El formato será un proyecto consistente en una estructura de archivos, carpetas, configuraciones y bases de datos, listas para ejecutarse bajo el entorno Node.js
+
+Principios de programación back-end:
+
+    Front y back-end son dos conceptos importantísimos a la hora de programar una aplicación web. Al front-end se lo conoce como "el lado del cliente", y al back-end todo "el lado del servidor"
+
+    Front-end: parte de la app que interactúa con los usuarios. “Lado del cliente”. Todo lo que se ve en la pantalla cuando se accede a un sitio web (letras, colores, efectos del mouse, etc)
+
+        Back-end: aplicaciones que viven en el servidor. “Lado del servidor”. Consiste en un servidor, una app y una base de datos. Se interactúa mediante peticiones
+
+MERN Stack:
+
+    “Estándar” de trabajo con tecnologías:
+
+MongoDB: database no relacional
+ExpressJS: framework para crear servidores en NodeJS
+ReactJS: librería para desarrollar interfaces de usuario
+NodeJS: entorno de ejecución de Javascript en el back-end
+    
+    La ventaja es que utiliza JavaScript como lenguaje. Permite profundizar en un solo lenguaje, logrando enfocar y reforzar conocimientos, y así aumentar la productividad
+
+    MongoDB: del inglés humongous (“enorme”), es un sistema de base de datos NoSQL orientado a documentos y de código abierto. Permite almacenar Big Data gestionando altos volúmenes de información sin degradar su performance en la búsqueda. Brinda alta escalabilidad y disponibilidad
+
+    ExpressJS: framework para Node.js que sirve para ayudarnos a crear apps web en menos tiempo
+
+    ReactJS: librería Javascript de código abierto diseñada para crear interfaces de usuario para facilitar el desarrollo de apps web en una sola página (SPA)
+
+    NodeJS: entorno en tiempo de ejecución multiplataforma para la capa del servidor (pero no limitándose a ello) basado en JS. Es de código abierto, asíncrono, con E/S de datos en una arquitectura orientada a eventos y basado en el motor V8 de Google
+
+Distintas maneras de probar JS:
+    
+    En el front-end:
+    
+Con la consola web: muestra información relacionada a los logs de la página web. Muestra advertencias y mensajes generados por Javascript en tiempo de ejecución. Permite interactuar con la página ejecutando expresiones Javascript
+
+Usando los métodos console.log(), imprimir info; console.error(), errores, resalta el código en rojo; console.warn(), para advertencias; console.clear(), limpia la consola
+
+Se la accede con F12 + ir a “Console”
+
+En el back-end:
+
+Consola CLI: “command line interface”. Permite ejecutar el programa servidor. Muestra info asociada a los logs de los procesos de back-end (son mensajes de debug que enviamos desde nuestro programa con el objeto “console”. También muestra warnings y mensajes informativos (SIEMPRE en tiempo de ejecución
+
+    Ejemplo: https://cmder.net/
+    Pero la ideal: Terminal en VSC
+
+Tipos de datos en JS:
+
+Variable: espacio reservado para almacenar un dato que puede ser usado o modificado cuando se quiera
+Tipo de dato: es el atributo que especifica la clase de dato que almacena la variable
+
+    Distintos tipos de datos:
+
+Tipos primitivos: strings, booleanos, y números. Null, y Undefined. La copia es por valor
+Tipo Objeto: objetos (Object), arrays, y funciones. La copia es por referencia
+
+EcmaScript 6:
+
+    Fue una enorme revisión que surgió en el año 2015 y trajo -dentro de varias polémicas- enormes avances en el mundo de la programación Javascript. Entre las mayores innovaciones está el uso de let y const, para dejar obsoleto el var; la introducción de clases; y los template strings
+
+Variables y formas de crearlas:
+
+    let y const son dos formas de declararlas, y limitan las variables al bloque en que son declaradas. Con var esto no pasa, y no se aconseja usarlo
+
+    let permite cambiar el contenido de las variables, mientras que const no. OJO a la diferencia entre inmutable y no reasignable. Las const no permiten reasignar, pero el objeto sí puede mutar (un diccionario puede cambiar el valor que guarda una clave, por ejemplo)

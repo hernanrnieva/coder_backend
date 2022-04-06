@@ -1,2 +1,45 @@
 Clase 13 - NodeJS como herramienta de desarrollo
 
+Transpilador:
+
+    Tipo especial de compilador que traduce de un lenguaje fuente a otro lenguaje fuente. De un nivel de abstracción parecido. Los compiladores suelen ir para bajo nivel. La transpilación es un caso especial de la compilación
+
+Typescript:
+
+    Fuertemente tipado, tipos genéricos, interfaces
+
+Babel:
+
+    Lo mismo, pasa de ES6 a ES5, por el tema de, por ejemplo, declaración de variables y acentos graves
+
+    Funciona mediante plugins con los que se le indica qué transformación realizar. Puede usarse por línea de comando. Se debe instalar la librería, el cliente, y el plugin:
+
+    npm install @babel/core @babel/cli @babel/preset-env
+
+    Luego se crea un fichero de configuración .babelrc y se le pasa el plugin con el cual trabajar
+
+TSC:
+
+    Compilador de Typescript
+
+Módulos en ES6:
+
+    Pueden definirse archivos y proyectos como módulos, para poder ser importados en forma asincrónica en lugar de sincrónica. Cuando se trata de proyectos, este cambio se puede realizar fácilmente desde el package.json, agregando "type": "module"
+
+    Cuando pasa esto NO se puede utilizar más el import ni el module.exports
+
+    Puede importarse a partir de condiciones. Puede usarse await/async, por ser funciones asincrónicas. Para módulos, puedo usar estas funciones sin necesidad de estar en funciones asincrónicas
+
+NodeJS:
+
+    Es un entorno en tiempo de ejecución que permite escribir JS desde el lado del servidor. Surge Typescript como alternativa para implementar aspectos fuertemente tipados que pueden ayudar a legibilidad y otras cosas. Puede ayudar para proyectos a gran escala
+
+    TypeScript se dice que es un "superconjunto" de JS
+
+    TS usa el archivo tsconfig.json para ver las librearías a leer, el módulo a guardar, carpetas donde guardar, etc. Configuraciones:
+
+        - module: método de generación del módulo
+        - target: nivel de lenguaje de salida
+        - rootDir: directorio raíz de entrada
+        - outDir: directorio para los archivos tras la transpilación
+    

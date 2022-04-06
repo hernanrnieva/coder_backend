@@ -1,0 +1,1 @@
+setTimeout(() => {console.log('Message 2')}, 2000)

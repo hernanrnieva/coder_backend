@@ -1,2 +1,16 @@
 Clase 14 - Webpack: Module Bundler
 
+Webpack:
+
+    Es un empaquetador de módulos, que genera un arhcivo único con todos los módulos que necesita una app para funcionar, encapsulando todos los módulos en un archivo (bundle.js) normalmente
+
+    Permite generar solo aquellos fragmentos JS que necesita una página para funcionar
+
+    Usando CLI:
+    
+        - Se crea un nuevo proyecto e inicializa
+        - Se instala con npm install webpack webpack-cli
+
+    Webpack utiliza una librería interna de node que fue deprecada en Node v17
+
+    webpack.js.org/ es la página oficial

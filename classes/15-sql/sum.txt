@@ -1,0 +1,30 @@
+Clase 15 - SQL
+
+Base de datos:
+
+    Repositorio persistente donde se guarda info organizadamente. Permite luego acceder a esta. Un servidor de base de datos es un contenedor que puede alojar un gran numero de bases de datos. Los clientes nos permiten interactuar con las bases de datos. Pueden estar implementados como consolas, gui, o mediante servers
+
+    La arquitectura cliente-servidor es un modelo de diseño de software en el que las tareas se reparten entre los proveedores de recursos (servidores) y clientes. Un cliente realiza peticiones a otro programa, un cliente de bases de datos se conecta e interactúa con el servidor de bases de datos
+
+    Tipos de clientes:
+
+        - CLI: Interactúa mediante una consola (command line interface)
+        - GUI: Interfaz gráfica (SQL Server por ejemplo)
+        - Web: se interactúa con él mediante el navegador
+        - Clientes de aplicación: está implementado dentro de la aplicación backend, y sirve para que nuestro programa se conecte e interactúe con la base de datos
+
+    CRUD:
+
+        "Crear, Leer, Actualizar, y Borrar". Aplicaciones básicas que se hacen sobre una base de datos. Resume las tareas requeridas por un usuario para crear y gestionar datos
+    
+    SQL: 
+
+        Structured Query Language. Es un tipo de lenguaje vinculado con bases de datos relacionales. Utiliza ágebra y cálculos relacionales para realizar consultas a una base de datos de forma sencilla
+
+        MySQL: gestion de base de datos relacional. Base de datos de código abierto más popular del mundo.
+
+        MariaDB: sistema de gestión de bases de datos derivado de MySQL con licecia GPL (General Public License)
+
+        MySQL y MariaDB son compatibles entre sí a nivel funcional
+
+    MariaDB se baja desde XAMPP y MySQL desde su página

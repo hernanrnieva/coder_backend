@@ -5,7 +5,8 @@ const mariaDB = {
         user: 'root',
         password: '',
         database: 'test'
-    }
+    },
+    useNullAsDefault: true
 }
 
 module.exports = {mariaDB}

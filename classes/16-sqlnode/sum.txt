@@ -1,0 +1,10 @@
+Clase 16 - SQL y NodeJS
+
+Knex.js:
+
+    Generador de consultas SQL con "baterías incluídas" para Postgres, MSSQL, MySQL, MariaDB, Oracle, y Amazon Redshift. Diseñado para ser portátil y fácil de usar. Cuenta con interfaz basada en callbacks y promesas. Se puede instalar con npm -i knex. También se deben instalar las dependencias acorde a la base de datos con la que se vaya a trabajar (pg, mysql, sqlite3, mssql)
+
+SQLite3:
+
+    Biblioteca en C que implementa un motor de base de datos SQL pequeño. Es el más utilizado. Integrado en teléfonos y computadoras. El formate es estable, multiplataforma y compatible con versiones anteriores. La última versión es la 3
+

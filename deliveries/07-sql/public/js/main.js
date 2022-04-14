@@ -1,16 +1,5 @@
 const socket = io()
 
-function renderProduct(data) {
-    const html = data.map((m, index) => {
-        return(`<div><p style="color: brown">
-            <b style="color: blue">${m.email}</b>:
-            ${m.date} 
-            <i style="color: green">${m.text}</i>
-        </p></div>`)
-    }).join(' ')
-    document.getElementById('messages').innerHTML = html
-}
-
 socket.on('product', (data) => {
     document.getElementById('products').innerHTML = data 
 })

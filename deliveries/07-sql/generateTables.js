@@ -2,11 +2,9 @@ const { sqlite3 } = require('./options/sqlite3')
 const { mariaDB } = require('./options/mariaDB')
 const knex = require('knex')
 
-const knexSQLite = require('knex')(sqlite3)
-const knexMariaDB = require('knex')(mariaDB)
-
 async function generateTables() {
     /* Products table */
+    const knexMariaDB = require('knex')(mariaDB)
     try{
         await knexMariaDB.schema.createTable('products', table => {
             table.increments('id')
@@ -16,15 +14,14 @@ async function generateTables() {
         })
     }
     catch(e){
-        console.log(`Error encountered: ${e}`)
-        return null
+        // TODO: error handling for when tables already exist
     }
     finally{
         knexMariaDB.destroy()
     }
-    console.log('Products table created')
 
     /* Messages table */
+    const knexSQLite = require('knex')(sqlite3)
     try{
         await knexSQLite.schema.createTable('messages', table => {
             table.increments('id')
@@ -34,13 +31,11 @@ async function generateTables() {
         })
     }
     catch(e){
-        console.log(`Error encountered: ${e}`)
-        return null
+        // TODO: error handling for when tables already exist
     }
     finally{
         knexSQLite.destroy()
     }
-    console.log('Messages table created')
 }
 
-module.exports = generateTables
+generateTables()

@@ -5,7 +5,6 @@ class Container{
     constructor(options, table){
         this.knex = require('knex')(options)
         this.table = table
-        console.log('Container initialized')
     }
 
     /* Methods */
@@ -14,9 +13,10 @@ class Container{
             await this.knex(this.table).insert(element)
         }catch(e){
             console.log(e)
-        }finally{
-            this.knex.destroy()
         }
+        // finally{
+        //     this.knex.destroy()
+        // }
     }
 
     async getById(id){
@@ -25,9 +25,10 @@ class Container{
             return Object.values(JSON.parse(JSON.stringify(element)))[0]
         }catch(e){
             console.log(e)
-        }finally{
-            this.knex.destroy()
         }
+        // finally{
+        //     this.knex.destroy()
+        // }
     }
     
     async getAll(){
@@ -36,9 +37,10 @@ class Container{
             return Object.values(JSON.parse(JSON.stringify(data)))
         }catch(e){
             console.log(e)
-        }finally{
-            this.knex.destroy()
         }
+        // finally{
+        //     this.knex.destroy()
+        // }
     }
 
     async deleteById(pId){
@@ -46,9 +48,10 @@ class Container{
             await this.knex.from(this.table).where({id: pId}).delete()
         }catch(e){
             console.log(e)
-        }finally{
-            this.knex.destroy()
         }
+        // finally{
+        //     this.knex.destroy()
+        // }
     }
 
     async deleteAll(){

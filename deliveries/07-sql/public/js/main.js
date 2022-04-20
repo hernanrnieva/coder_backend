@@ -19,7 +19,11 @@ socket.on('message', (data) => {
     renderMessage(data)
 })
 
-function addMessage(e) {
+socket.on('eMessage', (data) => {
+    window.alert(`Email entered does not the have correct format. Please input a valid email`)
+})
+
+function addMessage() {
     const message = {
         email: document.getElementById('email').value,
         text: document.getElementById('text').value

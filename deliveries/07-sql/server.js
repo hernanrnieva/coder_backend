@@ -56,6 +56,26 @@ const validateProduct = (product) => {
     return product
 }
 
+/* Message helper functions */
+const MESSAGE_KEYS = 2
+
+const validateMessage = (message) => {
+    let keys = Object.keys(message).length
+    if(keys != MESSAGE_KEYS)
+        throw 'Object does not have the correct amount of properties'
+
+    if(!message.hasOwnProperty('text') || !message.hasOwnProperty('email'))
+        throw 'Object does not have the correct properties'
+
+    // const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+
+    if(message.email.match(regex))
+        return message
+    
+    return null
+}
+
 /* Initial render */
 app.get('/products', (req, res) => {
     res.render('layouts/main')
@@ -92,10 +112,15 @@ io.on('connection', (socket) => {
 
     /* New message receipt */
     socket.on('message', (message) => {
-        message["date"] = new Date().toLocaleString()
-        messages.save(message)
-        .then(() => {messages.getAll().then((data) => {
-            io.sockets.emit('message', data)
-        })})
+        message = validateMessage(message)
+        if(!message)
+            socket.emit('eMessage')
+        else {
+            message["date"] = new Date().toLocaleString()
+            messages.save(message)
+            .then(() => {messages.getAll().then((data) => {
+                io.sockets.emit('message', data)
+            })})
+        }
     })
 })

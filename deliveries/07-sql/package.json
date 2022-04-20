@@ -1,0 +1,25 @@
+{
+  "name": "07-sql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "init-assets": "node generateTables.js",
+    "init-server": "nodemon server.js",
+    "start": "npm run init-assets && npm run init-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "express-handlebars": "^5.3.5",
+    "handlebars": "^4.7.7",
+    "knex": "^0.95.15",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.4.1",
+    "sqlite3": "^5.0.3"
+  }
+}

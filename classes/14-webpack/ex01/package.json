@@ -1,0 +1,17 @@
+{
+  "name": "ex01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack ./f1.js ./f2.js ./f3.js --mode=production",
+    "dev": "webpack ./f1.js ./f2.js ./f3.js --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.71.0",
+    "webpack-cli": "^4.9.2"
+  }
+}

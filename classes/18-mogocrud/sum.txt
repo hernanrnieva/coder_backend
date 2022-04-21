@@ -1,2 +1,95 @@
 Clase 18 - CRUD en MongoDB
 
+    CRUD:
+
+        Resume las funciones requeridas para crear y gestionar datos. Son herramientas de acceso constante, fácil, y necesario
+
+    Comandos helpers:
+
+        - show dbs
+        - use
+        - db
+        - show collections
+        - load: carga un script de Comandos
+
+    Manejo de db y colecciones:
+
+        - db.createCollection("col")
+        - db.col.stats()
+        - db.col.storagesize()
+        - db.col.totalIndexSize()
+        - db.col.validate({full: true})
+        - db.col.renameCollection("new col", true)
+
+        ### mirar slide para ver detalles ###
+
+    Insert:
+
+        - db.col.insertOne({data)})
+        - db.col.insert({data)}, false) unordered insert
+    
+    Read:
+
+        - db.col.findOne()
+        - db.col.find()
+        - db.col.find().pretty()
+        - db.col.find({name: "hola", age: 23})
+
+    Formato de un doc:
+
+        Siempre se agrega un campo llamado ObjectID. Asegura unicidad de documentos y tiene 3 partes:
+
+        Timestamp, random, count
+
+        Existe un coversor para este timestamp
+
+    Count:
+
+        - db.col.estimatedDocumentCount() cantidad de docs en la colección
+        - db.col.countDocuments({data}) que cumplen cierto criterio
+
+    Filtros:
+
+        - $and
+        - $or
+        - $lt less than
+        - $lte less than equal
+        - $gt greater than
+        - $gte greater than equal
+        - $ne not equal
+        - $eq equal
+        - $exists
+        - $in in an array
+        - $nin not in
+        - $size
+        - $all
+        - $elemMatch
+
+    Busqueda avanzada:
+
+        - db.col.distinct(val) da un array con los distintos valores que toma un campo en los documentos de la colección
+        - db.col.find({doc.subdoc: value}) filtra subdocumentos
+
+    Proyecciones:
+
+        Utilizadas para devolver un determinado conjunto de campos de un documento. Es equivalente a usar SELECT CAMPO. Básicamente se ponen en 0 a los datos que no sean requeridos, y en 1 a los que sí
+
+    Sort:
+
+        Ordena la respuesta, con 1 se usa ascendente y -1 desc. El limit() da un determinado cantidad de resultados. skip() saltea la cantidad de docs que le indique
+
+    Update:
+
+        db.col.update({"campo": value}, {$set: {"campoM": value}}}, {multi: true (para modificar varios, sino uso updateMany)})
+
+    Delete:
+
+        db.col.deleteOne/Many.({data})
+
+        También se puede usar db.col.remove({data}), que devuelve además cuántos docs se borraron
+
+    Usuarios y permisos:
+
+        db.createUser() me crea un usuario. Ejemplos:
+
+            - lector: solo puede leer. Uso db.createUser({user: "lector", pwd: "sadasd", roles: [{role: "readWrite", db: "users"}]})

@@ -1,1 +1,59 @@
 Clase 17 - MongoDB
+
+MongoDB:
+
+    Base de datos no relacional, NoSQL, orientada a documentos que ofrece gran escalabilidad y flexibilidad, y un modelo de consultas e indexación avanzado
+
+    Variantes de despliegue:
+
+        Local: con Mongo Server
+
+        Remota: mediante Mongo Atlas, existente en a nube
+
+    Características:
+
+        - Almacena datos en docs flexibles similares a JSON
+        - El modelo se asigna a los objetos en el código de su app para facilitar el trabajo con los datos
+        - Alta disponibilidad, escalabilidad horizontal, y distribución geográfica
+        - Gratuito
+
+    Intro:
+
+        - NoSQL define sistemas que no son relacionales, y no usan SQL como lenguaje principal de consultas
+        - MongoDB es la base NoSQL más conocida
+        - No se basa en el concepto de Tabla, Fila, y Registro. sino que usa Colección, Documento, y Propiedad
+        - Las colecciones guardan documentos en vez de registros como en SQL. Una fila está compuesta de columnas y siempre son las mismas. Un documento se compone por claves y valores, y cada uno puede variar relevantamente de otro en una misma colección
+        - Un DOCUMENTO EMBEBIDO es uno que está dentro de otro, y ese mismo está dentro de la misma colección
+
+    Ventajas y desventajas:
+
+        SQL brinda un sistema de almacenamiento de datos totalmente estructurado. Al evolucionar las apps, se tienen que realizar modificaciones en el modelo conceptual de la base de datos. Acá entro el concepto de NoSQL, brindando la flexibilidad que nos ofrecen la base de datos documentales, ya que laburan con datos en formato JSON
+
+        V de SQL:
+
+            - Ejecutar sentencias SQL directamente en la base de datos
+            - Posibilidad de abstracción
+            - Almacenamiento organizado y jerarquizado
+            - Permite evaluar duplicidad de registros
+            - Mejora el mantenimiento de datos en relación a la seguridad requerida de los mismos
+
+        D de SQL:
+
+            - El diseño debe contemplar cambios
+            - Require más espacio de almacenamiento
+            - Son más pesadas sus transacciones
+            - Los límites en los campos de las tablas pueden hacer perder datos por truncamiento si erróneamente se crean mal los tamaños
+
+        V de MongoDB:
+
+            - Escalabilidad y descentralización
+            - Sistemas más abiertos y flexibles
+            - No requieren recursos potentes
+            - Optimizan las consultas para grandes cantidades de bases de datos
+
+        D de MongoDB:
+
+            - Problemas con sentencias SQL
+            - No puede realizar transacciones
+            - Carece de joins
+            - No estan estandarizadas respecto a las bases de datos SQL

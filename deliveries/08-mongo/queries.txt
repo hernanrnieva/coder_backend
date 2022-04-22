@@ -1,0 +1,56 @@
+/* Creating database */
+use ecommerce;
+
+/* Inserting documents */
+db.products.insert([{title: 'Fiat Tipo', price: 1200, thumbnail: 'fiattipo.com'}, {title: 'Chevrolet Meriva', price: 2800, thumbnail: 'chevroletmeriva.com'}, {title: 'VW Suran', price: 1500, thumbnail: 'vwsuran.com'}, {title: 'VW Bora', price: 2800, thumbnail: 'vwbora.com'}, {title: 'VW Scirocco', price: 2800, thumbnail: 'vwscirocco.com'}, {title: 'Chery Tiggo', price: 2200, thumbnail: 'cherytiggo.com'}, {title: 'Fiat Cronos', price: 1800, thumbnail: 'fiatcronos.com'}, {title: 'Fiat Uno', price: 4100, thumbnail: 'fiatuno.com'}, {title: 'Ford Fiesta', price: 3500, thumbnail: 'fordfiesta.com'}, {title: 'Tame Impala', price: 800, thumbnail: 'tameimpala.com'}])
+
+db.messages.insert([{text: 'Hi there', email: 'julian@gmail.com', date: '11/10/2022'}, {text: 'How are you?', email: 'hernan@gmail.com', date: '11/11/2022'}, {text: 'Good, and you?', email: 'julian@gmail.com', date: '11/12/2022'}, {text: 'Good, what are you doing?', email: 'hernan@gmail.com', date: '11/13/2022'}, {text: 'Coding, and you?', email: 'julian@gmail.com', date: '11/14/2022'}, {text: 'Drinking coffee', email: 'hernan@gmail.com', date: '11/15/2022'}, {text: 'I hate coffee', email: 'julian@gmail.com', date: '11/16/2022'}, {text: 'I hate tea', email: 'hernan@gmail.com', date: '11/17/2022'}, {text: 'I like tea', email: 'julian@gmail.com', date: '11/18/2022'}, {text: 'I do not', email: 'hernan@gmail.com', date: '11/19/2022'}])
+
+/* Listing all documents */
+db.products.find()
+db.messages.find()
+
+/* Amount of documents in each */
+db.products.count()
+db.messages.count()
+
+/* Adding one product */
+db.products.insert({title: 'Nissan 370Z', price: 1500, thumbnail: 'nissan,com'})
+
+/* CRUD */
+// Products with price less than 1000
+db.products.find({price: {$lt: 1000}})
+
+// Products with price between 1000 and 3000
+db.products.find({$and: [{price: {$gte: 1000}}, {price: {$lte: 3000}}]})
+    
+// Products with price more than 3000
+db.products.find({price: {$gt: 3000}})
+
+// Third cheapest product
+db.products.find({}).sort({"price": 1}).skip(2).limit(1)
+
+// Updating all products' stock to 100
+db.products.updateMany({}, {$set: {"stock": 100}})
+
+// Updating products with price higher than 4000's stock to 0
+db.products.updateMany({price: {$gt: 4000}}, {$set: {"stock": 0}})
+
+// Deleting products with price less than 1000
+db.products.deleteMany({price: {$lt: 1000}})
+
+/* Creating user */
+// Switching to user db as root
+use admin
+
+// Creating user
+db.createUser({"user": "pepe", "pwd": "asd456", "roles": [{role: "read", db: "ecommerce"}]})
+
+// Logging in as pepe
+mongo -u pepe -p asd456
+
+// Should be able to read
+db.products.find()
+
+// But not to write (access control is not enabled so it doesn't actually restrict it)
+db.products.insert({title: 'Nissan 350', price: 2600, thumbnail: 'nissan35.com'})

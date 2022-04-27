@@ -1,10 +1,9 @@
 const mongoose = require('mongoose')
-const { modelName } = require('./models/studentSchema')
 const studentModel = require('./models/studentSchema')
 
 async function CRUD(){
     try {
-        const URL = 'mongodb://127.0.0.1:27017/school1'
+        const URL = 'mongodb://127.0.0.1:27017/school'
         let res = await mongoose.connect(URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true
@@ -82,12 +81,25 @@ async function CRUD(){
         // .then((data) => console.log(data))
 
         // g
-        studentModel.updateMany({}, {$set: {ingreso: false}}, {
-            returnNewDocument: true,
-            new: true,
-            strict: false,
-        })
-        .then((data) => console.log(data))
+        // studentModel.updateMany({}, {$set: {entering: false}}, {
+        //     // Options
+        //     returnNewDocument: true,
+        //     new: true,
+        //     strict: false,
+        // })
+        // .then((data) => console.log(data))
+
+        // h
+        // studentModel.updateMany({course: 'Hola'}, {$set: {entering: true}}, {
+        //     returnNewDocument: true,
+        //     new: true,
+        //     strict: false,
+        // })
+        // .then((data) => console.log(data))
+
+        // i
+        // studentModel.deleteMany({cours: 'Hola'})
+        // .then((data) => console.log(data))
     }catch(e){
         console.log(e)
     }

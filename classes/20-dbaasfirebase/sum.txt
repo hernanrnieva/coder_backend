@@ -1,2 +1,44 @@
 Clase 20 - DBaaS & Firebase
 
+DBaaS:
+
+    DataBase as a Service. Gestión de base de datos gestionada y almacenada en un servidor de terceros (AWS por ejemplo). Así también es necesario tener un servicio "por atrás" como PaaS o Iaas para estar seguros de tener la infraestructura necesaria
+
+    Hay dos modalidades:
+
+        - Clásico: el cliente usa la infraestructura física del proveedor para alojar sus bases de datos
+        - Gestionado: el cliente se desentiende incluso de cualquier mantenimiento y gestión avanzada de la db, que asume el proveedor
+
+    Ventajas:
+
+        - Eliminación de infraestructura física, ahorrando costos
+        - Ahorro de costos generalizados (de personal también por ejemplo)
+        - Escalabilidad
+        - Personal cualificado
+
+    MongoDB Atlas:
+
+        Es un serivicio de Cloud Database que permite gestionar y crear nuestra base MongoDB desde cualquier lugar con su plataforma. Está orientada a ser accesible desde el navegador, aliviando el trabajo de los devs
+
+        Caracterísiticas:
+
+            - Automatización
+            - Flexibilidad
+            - Seguridad
+            - Escalabilidad
+            - Alta disponibilidad
+            - Alto rendimiento
+
+Firebase:
+
+    Plataforma para el desarrollo de apps web, que brinda una base de datos en tiempo real. Permite a un usuario conectarse a la base de datos y enviar automáticamente los datos. Se puede administrar por cualquier app backend
+
+    No neceistamos casarnos con Firebase, se usa lo que se neceistamos
+
+        - Cloud Storage: base de datos para que usuarios puedan compartir ficheros e imágenes sin hacer bases de datos propias, que para imágenesp puede ser tedioso
+
+        - Cloud Functions: se ahorra toda la infraestructura backend. Es lo más caro de parte de google. Es básicamente el DBaaS
+
+    Firebase con Node:
+
+        Usando la opción Cloud Firestore, es de tipo NoSQL

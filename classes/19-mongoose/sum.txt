@@ -1,2 +1,20 @@
 Clase 19 - Mongoose
 
+Mongoose:
+
+    Dependencia de Js que se conecta a la instancia de MongoDB. Tiene habilidad pra definir el esquema del documento (su magia). Nos ayuda a mantener cierta estructura en los documentos usando esquemas y modelos. Quita flexibilidad pero agrega estructuración y orden
+
+    Usa un objeto Schema para definir las propiedades del doc, para forzar su estructura. Después se define un Modelo Constructor para crear instancias de los docs de MongoDB
+
+    Permite definir objetos con un esquema fuertemente tipado, es decir que es un Object Document Mapper (ODM). Proporciona amplias funcionalidades para crear y trabajar con esquemas
+
+    Permite hacer muchas cosas antes de guardar el dato en sí (validar con una función, pasar strings a mayúsculas, usar expresiones regulares, etc).
+
+    Uso:
+
+        - Se instala con npm
+        - Se describe el modelo de la db
+        - Levanto el motor
+        - Creo la función de conexión con ciertas opciones
+        - Hago CRUD
+        - Queryeo

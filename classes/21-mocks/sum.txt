@@ -1,0 +1,49 @@
+Clase 21 - Mocks
+
+    TDD:
+
+        Test Driven Development. Práctica de programación para escribir primero las pruebas, y luego el código. Haciéndolo más robusto y orientado a pruebas. Las pruebas deben ser generalmente unitarias
+
+        Concepto:
+
+            - Escribir una prueba que falle
+            - Hacer que el código pase la prueba
+            - Eliminar la redundancia refactorizando
+
+        Detalles:
+
+            - Hacer tests después de refactor
+
+    API:
+
+        Interfaz de programación de aplicaciones. Conjunto de definiciones y protocolos para desarrollar e integrar software de apicaciones
+
+        Conceptos:
+
+            - Permite que productos y servicios se comuniquen abstractamente
+            - Simplifican el desarrollo de aplicaciones
+            - Otorgan flexibilidad
+
+
+        Funcionan como contratos que se deben seguir para asegurar buen funcionamiento
+
+    Mocking:
+
+        Simular objetos en memoria para ejecutar pruebas unitarias. Se pueden servir desde un servidor web a través de una Mock API
+
+        En TDD:
+
+            Algunas dependencias o elementos fuera de contexto pueden traer problemas a futuro, por lo que aseguramos funcionamiento temprano en forma de "mentira", sabiendo sólo que resultado debo obtener, sin importar todo lo que haya detrás
+
+        Mocks API:
+
+            Permiten desarrollar y probar el front como un componente independiente del back end. Facilita y reduce tiempos de desarrollo, y aumenta la productividad. Un mock a nivel servidor es útil para el equipo que trabaja en la interfaz del usuario, ya que responde preguntas triviales y permite avanzar sin tener gran avance detrás
+
+            Tiene que estar bien diseñada y documentada. Si hay errores en las especificaciones, va a haber disparidad en el comportamiento, haciendo que después haya cagadas
+
+        FAKER.js:
+
+            Librería que permite generar datos aleatorios. Se usa con npm.
+    
+
+        

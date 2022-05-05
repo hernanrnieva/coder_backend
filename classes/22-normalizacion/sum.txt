@@ -1,0 +1,31 @@
+Clase 22 - Normalización de datos
+
+    Qué es?
+
+        Consiste en estandarización y validación de datos, que elimina redundancias o inconsistencias, complementando datos mediante reglas para dejar todo más cómodo y útil para quien las usa y gestiona
+
+        Es útil cuando la base de datos es grande
+
+        Reglas:
+
+            - Estructura plana
+            - Cada entidad como propiedad de objeto diferente
+            - Relaciones con otras entidaddes deben crearse basadas en identificadores 'id'
+
+    Normalizr:
+
+        Paquete útil para crear datos normalizados. Está en npm
+
+        Funciona definiendo esquemas y luego declarando cómo estos se representan a través de entidades. El único requisito es que cada entidad tenga la propiedad 'id'
+
+        Pros (en base al ejercicio de blogpost en clase):
+
+            - Actualizar los datos es muy fácil
+            - No hay datos duplicados
+
+        Contras (en base al ejercicio de blogpost en clase):
+
+            - Mostrar pocos comentarios requiere pasar un objeto con todos los comentarios
+            - En aplicaciones pequeñas sin muchos datos, es posible que no sea necesario
+
+        

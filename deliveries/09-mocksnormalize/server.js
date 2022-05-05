@@ -3,12 +3,14 @@ const express = require('express')
 const hbs = require('handlebars')
 const fs = require('fs')
 const handlebars = require('express-handlebars')
-const Container = require('./container')
+const ContainerDB = require('./containers/contDB')
+const ContainerFile = require('./containers/contFile')
 const {Server: IOServer} = require('socket.io')
 const {Server: HTTPServer} = require('http')
 const {faker: faker} = require('@faker-js/faker')
 faker.locale = 'en'
 const {commerce, image} = faker
+const MessageNormalizer = require('./normalizr')
 
 /* Server initialization */
 const app = express()
@@ -40,10 +42,12 @@ const fileContent = fs.readFileSync('./public/views/partials/table.hbs').toStrin
 let template = hbs.compile(fileContent)
 
 /* Container and sql initializations */
-const { sqlite3 } = require('./options/sqlite3')
+// const { sqlite3 } = require('./options/sqlite3')
+// const messages = new ContainerDB(sqlite3, 'messages') 
 const { mariaDB } = require('./options/mariaDB')
-const messages = new Container(sqlite3, 'messages') 
-const products = new Container(mariaDB, 'products') 
+const products = new ContainerDB(mariaDB, 'products') 
+const messages = new ContainerFile('messages.txt') 
+const messageNormalizer = new MessageNormalizer()
 
 /* Product helper functions */
 const PRODUCT_KEYS = 3
@@ -75,12 +79,13 @@ const validateMessage = (message) => {
     if(keys != MESSAGE_KEYS)
         throw 'Object does not have the correct amount of properties'
 
-    if(!message.hasOwnProperty('text') || !message.hasOwnProperty('email'))
+    if(!message.hasOwnProperty('author') ||
+       !message.hasOwnProperty('text'))
         throw 'Object does not have the correct properties'
 
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
 
-    if(message.email.match(regex))
+    if(message.author.email.match(regex))
         return message
     
     return null
@@ -112,7 +117,11 @@ io.on('connection', (socket) => {
 
     /* Existing messages emittance */
     messages.getAll().then((data) => {
-        socket.emit('message', data)
+        const normalized = messageNormalizer.normalizeMessages({
+            id: 'messages',
+            messages: data
+        })
+        socket.emit('message', normalized)
     })
 
     /* New product receipt */
@@ -139,7 +148,12 @@ io.on('connection', (socket) => {
             message["date"] = new Date().toLocaleString()
             messages.save(message)
             .then(() => {messages.getAll().then((data) => {
-                io.sockets.emit('message', data)
+                const normalized = messageNormalizer.normalizeMessages({
+                    id: 'messages',
+                    messages: data
+                })
+                socket.emit('message', normalized)
+                io.sockets.emit('message', normalized)
             })})
         }
     })

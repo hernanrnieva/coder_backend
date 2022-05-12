@@ -1,2 +1,31 @@
 Clase 23 - Cookies, sesiones y storages 1
 
+Cookies, qué son?:
+
+    Archivos que podemos guardar del lado del cliente, en el navegador del usuario. Después facilitan procesos al tener datos ya guardados.
+
+    Características:
+
+        - Se les puede configurar un tiempo de vida. Una vez terminado se elimina del navegador
+        - Cuenta con espacio limitado, por lo que se debe elegir bien qué se guarda
+        - No se deben almacenar datos sensibles
+
+    Usandolas:
+
+        Existe un módulo que se llama cookie-parser. Es un middleware que se requiere a nivel de app (app.use(cookieParser()))
+
+    Mas Características:
+
+        - Se les puede agregar un mecanismo de validación que adjunta a cada cookie un valor encriptado de su contenido (mediante una palabra clave o 'secreto' definido desde el sv). Así el sv es capaz de verificar si la cookie no fue adulterada
+
+    Cookie firmada:
+
+        Basta con agregar el argumento signed: true. Se encuentran en req.signedCookies, el resto no apareceran, como si no existieran
+
+Session:
+
+    Paquete de Node que permite que una variable sea accesible desde cualquier lugar del sitio. Se almacena del lado del servidor
+
+    Del lado del cliente se crea un identificador unico para acceder a esa info desde el navegador. Los datos almacenados en session se eliminan al cerrar la ventana del navegador. Se usa para inicios de sesión mas que nada
+
+    Se instala con express-session y se set upea usando secret: 'clave', resave: true, y saveUninitialized: true. Se accede con req.session

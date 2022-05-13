@@ -42,10 +42,7 @@ const fileContent = fs.readFileSync('./public/views/partials/table.hbs').toStrin
 let template = hbs.compile(fileContent)
 
 /* Container and sql initializations */
-// const messages = new ContainerDB(sqlite3, 'messages') 
-// const { mariaDB } = require('./options/mariaDB')
-const { sqlite3 } = require('./options/sqlite3')
-const products = new ContainerDB(sqlite3, 'products') 
+const products = new ContainerFile('products.txt') 
 const messages = new ContainerFile('messages.txt') 
 const messageNormalizer = new MessageNormalizer()
 

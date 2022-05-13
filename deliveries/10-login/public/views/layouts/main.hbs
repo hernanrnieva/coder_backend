@@ -1,9 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 {{> header}}
-<body>
+<body class="bg-dark">
     <div class="container mt-3">
-        <div class="jumbotron">
+        <div class="rounded mb-3 pt-2 pb-1 pl-4 pr-4 bg-light bg-gradient d-flex justify-content-between">
+            <span><h2 class="mt-4" style="color: green">Welcome {{username}}!</h2></span>
+            <span><form class="mt-2" action="/logout" method="get">
+                <button class="btn btn-warning mt-3 mb-5">Logout</button>
+            </form></span>
+        </div>
+        <div class="jumbotron bg-light bg-gradient">
             <h2 style="color: blue">Insert product data</h2>
             <br>
             <form onsubmit="return addProduct(this)">

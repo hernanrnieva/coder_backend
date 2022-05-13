@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body class="bg-dark">
+    <div class="container mt-3">
+        <div class="rounded mb-3 pt-2 pb-1 pl-4 pr-4 bg-light bg-gradient text-center">
+            <h2 class="mb-3 mt-3" style="color: green">Welcome, please login:</h2>
+            <form action="/login" method="get">
+                <label for="username"><b>Username</b></label>
+                <input id="username" class="form-control mb-3" type="text" name="username" required/>
+                <button class="btn btn-success mt-3 mb-5">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+{{> footer}}

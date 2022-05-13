@@ -1,3 +1,17 @@
 Clase 23 - Cookies, sesiones y storages 2
 
+    memoryStorage:
 
+        Cuando nos manejamos con session-memory utilizamos almacenamiento en memoria, que muere al finalizar
+
+    fileStore:
+
+        Se utiliza igual, solo que se crea una carpeta donde se almacenan lso datos de session. Estos datos tendrán persistencia ya que quedan guardados en el servidor
+
+        Se importa con session-file-store
+
+        Se incluye session como middleware a nivel app, igual que antes. Lo único que se agrega es la clave de store en el objeto
+
+    Session Mongo:
+
+        Módulo que permite utilizar la base de mongo para persistir datos de session

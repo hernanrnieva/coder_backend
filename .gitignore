@@ -3,3 +3,4 @@
 **/__db
 messages.txt
 **.sqlite
+**/sessions

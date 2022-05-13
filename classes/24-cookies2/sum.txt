@@ -14,4 +14,7 @@ Clase 23 - Cookies, sesiones y storages 2
 
     Session Mongo:
 
-        Módulo que permite utilizar la base de mongo para persistir datos de session
+        Módulo que permite utilizar la base de mongo para persistir datos de session en vez de archivos como fileStore
+
+        Se usa con el paquete connect-mongo
+        

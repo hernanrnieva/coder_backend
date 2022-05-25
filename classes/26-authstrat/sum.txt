@@ -1,0 +1,19 @@
+Clase 26 - Técnicas de autenticación
+
+Passport para Twitter:
+
+    Para usar con Twitter debe usarse la estrategia de OAuth 1.0a. Hay que usar el módulo passport-twitter en vez del local. Es necesario tener la API de twitter for developers y seguir los datos de las diapositivas (es medio plomo)
+
+JSON Web Token:
+
+    Son cadenas de datos que se pueden utilizar para autenticar e intercambiar información entre un servidor y un cliente
+
+    Flujo:
+
+        1. El cliente envía credenciales
+        2. El servidor las verifica, genera un JWT, y lo envía como respuesta
+        3. Las solicitudes posteriores del cliente tienen un JWT en los headers de la solicitud
+        4. El servidor valida el token y responde si va bien
+
+    Se instala con jsonwebtoken. Se usa también la constante Private Key
+    

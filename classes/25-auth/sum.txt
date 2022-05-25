@@ -1,2 +1,34 @@
 Clase 25 - Autorización y autenticación
 
+Autorización vs. autenticación:
+
+    Autenticación:
+
+        Proceso para asegurar la identidad de un usuario. La contraseña es el más conocido método para verificar esto. El sistema valida la autenticación en base a credenciales
+
+    Autorización:
+
+        Define la info, serivicios, y recursos del sistema a los que puede acceder el usuario atenticado. Se suelen usar middlewares para verificar esto y limitar la acción del usuario.
+
+    En resumen, la autorización verifica permisos, y la autenticación identidades
+
+    Métodos de autenticación:
+
+        - Usuario y clave
+        - Passwordless. Con mails por ejemplo
+        - Por redes sociales
+        - Datos biométricos
+        - JSON Web Token
+        - OAuth 2.0, mediante APIs
+
+Passport:
+
+    Middleware de autenticación de NodeJS. Autentica solicitudes, por lo que abstrae al usuario. Reconoce los distintos métodos de login usados actualmente. Cada mecanismo es una strategy. Los disponibles son:
+
+        - local
+        - openid
+        - oauth (redes sociales por ej)
+
+    Se deben instalar los módulos passport y passport-local
+    Se importan desde el index
+    Se define una instancia de LocalStrategy y se carga mediante el método passport.use(), con primer parámetro el nombre de la strategy, y segundo una instancia de la estrategia. Espera encontrar por defecto en los parámetros username y password

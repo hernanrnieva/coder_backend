@@ -32,3 +32,12 @@ Passport:
     Se deben instalar los módulos passport y passport-local
     Se importan desde el index
     Se define una instancia de LocalStrategy y se carga mediante el método passport.use(), con primer parámetro el nombre de la strategy, y segundo una instancia de la estrategia. Espera encontrar por defecto en los parámetros username y password
+    Se busca el usuario con su username con el método User.findOne(). Se utiliza el callback de verificación done en el return para devolver lo que corresponda. Si se encuentra en la base de datos y es válido devuelve en el done: null, diciendo que no hubo error
+
+    Serializar y deserializar:
+
+        Passport necesita usuarios y deserializarlos fuera de la sesión, de modo que cada solicitud no contenga las credenciales del usuario anterior. El serialize lo que hace es guardar determinado campo especificado. 
+
+    Rutas protegidas:
+
+        Se puede usar con middlewares, usando req.isAuthenticated(). Se agrega este middleware en las rutas que se quieran proteger

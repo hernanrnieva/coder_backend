@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body class="bg-dark">
+    <div class="container mt-3">
+        <div class="rounded mb-3 pt-2 pb-1 pl-4 pr-4 bg-light bg-gradient d-flex justify-content-between">
+            <span><h2 class="mt-4" style="color: green">Welcome {{email}}!</h2></span>
+            <span><form class="mt-2" action="/logout" method="get">
+                <button class="btn btn-warning mt-3 mb-5">Logout</button>
+            </form></span>
+        </div>
+        <div class="jumbotron bg-light bg-gradient">
+            <h2 style="color: blue">Insert product data</h2>
+            <br>
+            <form onsubmit="return addProduct(this)">
+                <div class="form-group">
+                    <label for="title"><b>Title</b></label>
+                    <input id="title" class="form-control" type="text" name="title" required/>
+                </div>
+                <div class="form-group">
+                    <label for="price"><b>Price</b></label>
+                    <input id="price" class="form-control" type="text" name="price" required/>
+                </div>
+                <div class="form-group">
+                    <label for="thumbnail"><b>Thumbnail</b></label>
+                    <input id="thumbnail" class="form-control" type="text" name="thumbnail" required/>
+                </div>
+                <button class="btn btn-success mt-3 mb-5">Submit</button>
+            </form>
+            <div id="products"></div>
+            <h2 class="mt-4 mb-4" style="color: blue">Live chat.</h2>
+            <h3 class="mt-4 mb-4" style="color: green" id="ratio"></h3>
+            <div id="messages"></div>
+            <form class="mt-3" onsubmit="return addMessage(this)">
+                <input required type="text" id="name" placeholder="Name"><br><br>
+                <input required type="text" id="lastname" placeholder="Last Name"><br><br>
+                <input required type="text" id="email" placeholder="Email"><br><br>
+                <input required type="number" id="age" placeholder="Age"><br><br>
+                <input required type="text" id="avatar" placeholder="Avatar"><br><br>
+                <input required type="text" id="text" placeholder="Message"><br><br>
+                <input type="submit" value="Send">
+            </form>
+        </div>
+    </div>
+</body>
+{{> footer}}

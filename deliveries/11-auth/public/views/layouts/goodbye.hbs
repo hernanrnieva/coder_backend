@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> logout-header}}
+<body class="bg-dark">
+    <div class="container mt-3">
+        <div class="rounded mb-3 pt-2 pb-1 pl-4 pr-4 bg-light bg-gradient text-center">
+            {{#if username}}
+                <h2 style="color: green">Goodbye {{username}}!</h2>
+            {{else}}
+                <h2 style="color: green">Goodbye!</h2>
+            {{/if}}
+        </div>
+    </div>
+</body>
+{{> footer}}

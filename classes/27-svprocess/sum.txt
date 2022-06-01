@@ -1,0 +1,62 @@
+Clase 27 - Proceso prinicpal del servidor
+
+    Básicamente es pasar argumentos por la línea de comando. Se pasan después de la línea del comando del programa (se suelen enviar puertos, contraseñas, etc)
+
+    Ventajas:
+
+        - Permite terminar generando ajustes de configuración
+        - Se pasan como cadenas, y son manipulabes
+        - Pueden ser ilimitados
+
+    Desventajas:
+
+        - La interfaz tiene una curva de aprendizaje alto, por lo que es difícil de usar
+        - Pueden ser difíciles a menos que se esté en una computadora
+
+process.argv:
+
+    Es un objeto global que se puede usar sin bibliotecas adicionales. Se puede acceder de una
+
+minimist:
+
+    Es un módulo, transforma los argumentos en un objeto un poco más fácil de usar. Trabaja un poco sobre los 'flags':
+
+    - Un guión sólo crea un atributo cuyo nombre sera la primera letra después del guión, y cuyo valor será todo lo restante hasta el próximo argumento
+    - Si se quieren usar palabras como nombres de atributos se debe anteponer el doble guión
+    - Si luego de un argumento guinado no se encuentra ningún otro argumento o el siguiente también es guinado, el primero se interpreta con un booleano valor true
+    - Si existen valores sueltos no precedidos por ningún argumento todos se agrupan en un array con el nombre '_'
+
+    Puedo también decirle que me de opciones por defecto para algún argumento usando un object con un default: {} dentro
+
+    También puedo renombrar args usando alias: {}
+
+yargs:
+
+    Igual que minimist, con algunas modificaciones a nivel sintaxis
+
+Variables de entorno:
+
+    Son variables externas a nuestra app, que residen en el OS o contenedor de la app que se está usando. Es simplement un nombre asignado a un valor. Permiten administrar la configuración de nuestras apps por separado del código base. Facilitan la implementación de la app en distintos entornos. Por convención, se escribe el nombre con mayúscula, y los valores son strings
+
+    Las apps suelen necesitar que se establezcan muchas variables de entorno para que funcionen. Al confiar en configs externas, la app se puede implementar fácilmente en otros entornos. Algunos ejemplos son:
+
+    - Direcciones y puertos HTTP
+    - Ubicación de archivos y carpetas estáticos
+    - Credenciales de base de datos
+    - Credenciales de APIs externas
+
+    Se usa, en un archivo config.js:
+
+        module.exports = {
+            NODE_ENV: process.env.NODE_ENV || 'development'
+        }
+
+        En este caso la variable NODE_ENV tomará el valor definida en process.env.NODE_ENV, y si no hay nada, tomará el valor asignado entre comillas (aunque puede ser cualquier cosa)
+
+    Todas las variables son alimentadas al process.env, por eso es que siempre se chusmea eso
+
+Dotenv:
+
+    Módulo de node js que carga variables de entorno desde un archivo .env a process.env. Hace que las variables sean fáciles y rápidas de mantener
+
+    Dotenv permite definir varios entornos! Dependiendo del path que tenga cada environment

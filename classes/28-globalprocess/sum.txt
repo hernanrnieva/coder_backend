@@ -1,0 +1,43 @@
+Clase 28 - Global & Child Process
+
+Global Process:
+
+    Process es una variable global disponible en NodeJS. Se puede utilizar a nivel global en todo el entorno de ejecución. Ejemplos de datos del proces:
+
+        - Directorio: process.cwd()
+        - Id del proceso: process.pid
+        - Version de node: process.version
+        - Titulo del proceso: process.title
+        - OS: process.platform
+        - Mem usage: process.memoryUsage()
+    
+    Ejemplos de usos:
+
+        - Salir de ejecución del programa con exit(), con exit(number) se termina con un código
+        - En la función on() está la mayoría de la info del proceso que se está ejecutando. Usando process.on('event', cb) puedo ejecutar algo en base a un evento.
+        Por ejemplo con 'beforeExit' puedo hacer cosillas que no se harían normalmente.
+        Con el evento 'exit' ya no puedo evitar la salida pero también puedo hacer cositas.
+        Con 'uncaughtException' puedo manejar excepciones (muy básicamente)
+        - Con process.execPath devuelvo el nombre de la ruta absoluta del ejecutable que inició el proceso node
+        - process.stdout.write devuelve una secuenca conectada a stdout. Básicamente el console.log()
+
+Child Process:
+
+    Single Thread:
+
+        Cuando se pone en marcha un programa se dispone de un solo hilo de ejecución. Esto es bueno para atender mayor demanda con menos recursos. Todas las ops que NodeJS no puede realizar al instante (no bloqueantes), liberan el process, osea que atiende otras solicitudes. Una vez que se atiendan las solicitudes, Node puede levantar de manera interna otros procesos para realizar todo tipo de acciones que se deban producir como respuesta a esas solicitudes. Esos son los child process y se pueden crear con el módulo child_process
+
+        Node nos permite crear estos procesos y escuchar su entrada y salida. Hay 4 formas:
+
+            - exec()
+            - execFile()
+            - spawn()
+            - fork()
+
+        Con exec(), el primer argumento es el comando 'ls-lh', que enumera todos los archivos y carpetas del directorio actual en formato largo. El segundo arg es el callback, que tiene 3 parámetros. Si no se ejectura, se imprime el motivo error. Sino, cualquier dato que escriba al flujo de resultado estándar se captura en stdout y cualquier otro en stderr
+
+        Con execFile(), el primer parámetro es una ruta a un archivo ejecutable, y se guarda en un bufffer como exec(), al que se accede a través de una función de cb igual que antes
+
+        Con spawn() ejecuto un comando en un proceso. Se deben escuchar los eventos del flujo para capturar los resultados. El primer argumento es el comando 'find', y el segundo es un array con los argumentos para el comando ejecutado. Se pueden añadir oyentes con on()
+
+        Con fork() se varía spawn y deja intercambiar data entre procesos principales y secundarios. Puedo estar escuchando al secundario desde el principal. Fork evita bloqueos que pueda haber al estar el servidor web no pudiendo ejecutar ninguna nueva solicitud entrante. Fork hace correr el proceso secundario en un hilo aparte. Con el fork.send() envío data de un lado a otro, y con 'on' recibo. Hay que tener en cuenta que los módulos de ES6 hacen carga de archivos de forma no bloqueante, por lo que hay que añadir el paso de avisar cuando se termina de cargar algo para empezar a trabajar lo procesado

@@ -14,6 +14,7 @@ const localStrategy = Strategy
 const bcrypt = require ('bcrypt')
 const mongoose = require('mongoose')
 const parseArgs = require('minimist')
+const {fork} = require('child_process')
 
 /* Arguments init */
 const args = parseArgs(process.argv.slice(2))
@@ -23,6 +24,7 @@ const MessageNormalizer = require('./normalizr')
 const userDaoMongo = require('./daos/users/usersDaoMongoDB')
 const productsDaoMongo = require('./daos/users/productsDaoMongoDB')
 const messagesDaoMongo = require('./daos/users/messagesDaoMongoDB')
+const randomRouter = require('./randoms/routerRandom')
 
 /* Bcrypt settings */
 const saltRounds = 2
@@ -36,7 +38,7 @@ mongoose.connect(process.env.MONGOURL, {
 
 /* Server initialization */
 const app = express()
-const PORT = args.p? args.p : 8000
+const PORT = args.p? args.p : 8080
 const httpServer = new HTTPServer(app)
 const io = new IOServer(httpServer)
 
@@ -185,6 +187,8 @@ app.get('/info', (req, res) => {
         projectFolder: process.cwd()
     })
 })
+
+app.use('/randoms', randomRouter)
 
 /* Socket functionality */
 const util = require('util')

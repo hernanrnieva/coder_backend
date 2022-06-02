@@ -1,4 +1,5 @@
 /* Module imports */
+require('dotenv').config()
 const express = require('express')
 const hbs = require('handlebars')
 const fs = require('fs')
@@ -12,6 +13,10 @@ const Strategy = require('passport-local').Strategy
 const localStrategy = Strategy
 const bcrypt = require ('bcrypt')
 const mongoose = require('mongoose')
+const parseArgs = require('minimist')
+
+/* Arguments init */
+const args = parseArgs(process.argv.slice(2))
 
 /* File imports */
 const MessageNormalizer = require('./normalizr')
@@ -24,14 +29,14 @@ const saltRounds = 2
 
 /* Mongoose connection */
 mongoose.disconnect()
-mongoose.connect('mongodb+srv://hnieva:83vkK5DfsCI1o5OR@cluster0.3gv82.mongodb.net/ecommerce?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGOURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 
 /* Server initialization */
 const app = express()
-const PORT = 8080
+const PORT = args.p? args.p : 8000
 const httpServer = new HTTPServer(app)
 const io = new IOServer(httpServer)
 
@@ -169,8 +174,21 @@ app.get('/logout', (req, res) => {
     })
 })
 
+app.get('/info', (req, res) => {
+    res.json({
+        args: args,
+        platformName: process.platform,
+        nodeVersion: process.version,
+        memoryUsed: process.memoryUsage(),
+        execPath: process.title,
+        processId: process.pid,
+        projectFolder: process.cwd()
+    })
+})
+
 /* Socket functionality */
 const util = require('util')
+const { application } = require('express')
 io.on('connection', (socket) => {
     /* Existing products emittance */
     products.getAll().then((data) => {

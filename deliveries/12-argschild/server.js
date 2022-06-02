@@ -1,23 +1,28 @@
-/* Const declarations and imports */
+/* Module imports */
 const express = require('express')
 const hbs = require('handlebars')
 const fs = require('fs')
 const handlebars = require('express-handlebars')
 const {Server: IOServer} = require('socket.io')
 const {Server: HTTPServer} = require('http')
-const MessageNormalizer = require('./normalizr')
 const session = require('express-session')
 const cookieParser = require('cookie-parser')
-const userDaoMongo = require('./daos/users/usersDaoMongoDB')
-const productsDaoMongo = require('./daos/users/productsDaoMongoDB')
-const messagesDaoMongo = require('./daos/users/messagesDaoMongoDB')
 const passport = require('passport')
 const Strategy = require('passport-local').Strategy
 const localStrategy = Strategy
 const bcrypt = require ('bcrypt')
-const saltRounds = 2
 const mongoose = require('mongoose')
 
+/* File imports */
+const MessageNormalizer = require('./normalizr')
+const userDaoMongo = require('./daos/users/usersDaoMongoDB')
+const productsDaoMongo = require('./daos/users/productsDaoMongoDB')
+const messagesDaoMongo = require('./daos/users/messagesDaoMongoDB')
+
+/* Bcrypt settings */
+const saltRounds = 2
+
+/* Mongoose connection */
 mongoose.disconnect()
 mongoose.connect('mongodb+srv://hnieva:83vkK5DfsCI1o5OR@cluster0.3gv82.mongodb.net/ecommerce?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -226,7 +231,6 @@ io.on('connection', (socket) => {
                     socket.emit('message', normalized)
                     io.sockets.emit('message', normalized)
              })})})
-            
         }
     })
 })

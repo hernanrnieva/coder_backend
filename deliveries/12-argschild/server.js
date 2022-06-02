@@ -14,7 +14,6 @@ const localStrategy = Strategy
 const bcrypt = require ('bcrypt')
 const mongoose = require('mongoose')
 const parseArgs = require('minimist')
-const {fork} = require('child_process')
 
 /* Arguments init */
 const args = parseArgs(process.argv.slice(2))

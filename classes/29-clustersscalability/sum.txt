@@ -1,2 +1,60 @@
 Clase 29 - Clusters y escalabilidad
 
+Cluster:
+
+    Uso de subprocesos que permiten aprovachar la capacidad del procesador del servidor donde está la app. Node suele utilizar un single thread, por lo que puede limitar un poco la ejecución
+
+    Nosotros solíamos usar (como avanzado), un proceso bloqueante ejecutando el servidor, y otra cosa que se hacía aparte en un subproceso (usando fork)
+
+Módulo Cluster:
+
+    Clona el worker maestro, y delega la carga de trabajo a cada uno de los procesos hijos. Así se evita la sobrecarga de un solo núcleo. Con un método parecido al de el primer proceso se convierte en 'master', y los secundarios en 'workers'
+
+    Con require('os').cpus().length obtengo el número de CPUs. Es nrmal que el proceso master gestione los workers y el resto hagan el trabajo sucio
+
+    Comandos útiles:
+
+        - tasklist /fi "imagename eq node.exe": vemos los procesos node.js activos
+        - taskkill /pid <PID> /f: mata un proceso por su número de PID
+
+    Con bash:
+
+        - fuser <PORT> /tcp [-k]: encuentra [y mata] al proceso ocupando el puerto PORT
+
+Forever:
+
+    Permite solucionar los problemas de que:
+
+        - La consola queda inutilizable cuando arrancamos un servidor
+        - Si el servidor se para por un fallo, la app no arranca de nuevo
+
+    Comparación con nodemon:
+
+        - Nodemon sólo sirve en desarrollo, en producción obviamente no se puede. Forever sí
+
+    Comandos:
+
+        - start <filename>: arranca
+        - list: lista
+        - stop <PID>: para según el id
+        - stopall: para todos
+        - --help: ayuda
+
+PM2:
+
+    Gestor de procesos. Controla la ejecución de otro proceso. Simplifica las apps de Node para ejecutarlas como cluster. PM2 se encarga de crear un número de worker para cada process, sin darnos mucho laburo a nosotros
+
+    Aguanta mucho tráfica. La ventaja sobre forever es que tiene un cluster incorporado, en vez de forkear
+
+    Con pm2 start app.js arranco la aplicación. Si uso el flag -i se inicia en MODO CLUSTER, sino en MODO FORK
+
+    Puedo usar:
+
+        - pm2 list <app_name|namespace|id|'all'|json_conf>
+        - pm2 stop <app_name|namespace|id|'all'|json_conf>
+        - pm2 restart <app_name|namespace|id|'all'|json_conf>
+        - pm2 delete <app_name|namespace|id|'all'|json_conf>
+        - pm2 describe <id|app_name>
+        - pm2 monit
+        - pm2 logs
+        - pm2 flush

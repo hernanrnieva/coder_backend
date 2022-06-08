@@ -1,4 +1,5 @@
-const admin = require("firebase-admin");
+// Re-add package firebase-admin in case needed (currently causing vulnerability)
+// const admin = require("firebase-admin");
 const configs = require("./bd/class-20-coder-firebase-adminsdk-sjdsy-c3641c97ce.json");
 
 admin.initializeApp({

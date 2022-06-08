@@ -1,5 +1,6 @@
 const express = require('express')
-const multer = require('multer')
+// Re-add package multer in case needed (currently causing vulnerability)
+// const multer = require('multer')
 const app = express()
 const PORT = 8080
 app.use(express.static('public'))

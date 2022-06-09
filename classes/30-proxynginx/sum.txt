@@ -1,2 +1,35 @@
 Clase 30 - PROXY & NGINX
 
+PROXY:
+
+    Es un intermediario básicamente. Da diferentes funcionalidades
+
+    - Forward: del lado del cliente (sirve para ocultar IP por ejemplo, del lado del cliente)
+    - Reverse: del lado del servidor. El cliente se conecta al proxy y no al servidor directo. Lo redirige, sirve para no exponer la app principal
+
+    Ambos pueden trabajar juntos
+
+    Usos del reverse proxy:
+
+        - Balanceo de carga: un solo servidor de origen no puede manejar mucho tráfico entrante. El proxy inverso puede recibir este tráfico antes de que llegue al servidor de origen. En este caso puede regular la sobrecarga de los servidores y redirigir, sin afectar la funcionalidad general. Es el uso principal que se le da a estos proxys
+
+        - Seguridad mejorada: se puede mantener el anonimato de la red usando un proxy
+
+        - Potente caching: puedo utilizar u nproxy inverso para acelerar la web, almacenando en caché tanto el contenido estático como el dinámico
+
+        - Compresión superior: sirve para comprimir respuestas del servidor por ejemplo
+
+        - Cifrado SSL optimizado
+
+        - Monitoreo y registro del tráfico: puede usarse como centro de control para monitorear y registrar el tráfico
+
+NGINX:
+
+    Es un servidor web que actúa como un proxy
+
+    Comandos:
+
+        - ./nginx.exe -s stop: apaga
+        - ./nginx.exe -s quit: cierra elegantemente
+        - ./nginx.exe -s reload: reiniciar luego de cambiar la config
+        - ./nginx.exe -s reopen: reabrir logs de archivos

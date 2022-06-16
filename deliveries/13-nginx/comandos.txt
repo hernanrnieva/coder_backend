@@ -1,0 +1,57 @@
+- Ejecutar el servidor (modos FORK y CLUSTER) con nodemon verificando el número de procesos tomados por node
+
+    Modo Fork: 
+    
+        "nodemon server.js"
+        
+        Deberían mostrarse usando el comando 'tasklist /fi "imagename eq node.exe' dos procesos pertenecientes a nodemon y otro perteneciente al servidor
+
+    Modo Cluster: 
+    
+        "nodemons server.js --mode cluster
+    
+        Deberían mostrarse dos procesos pertenecientes a nodemon, otro al proceso maestro, y el resto perteneciente a la cantidad de núcleos
+
+- Ejecutar el servidor (con los parámetros adecuados) utilizando Forever, verificando su correcta operación. Listar los procesos por forever y por sistema operativo:
+
+    Modo Fork:
+
+        "forever start server.js"
+
+        Con 'forever list' debería verse un proceso ejecutándose. Por consola deberían verse dos (uno perteneciente a forever, y otro al servidor)
+
+        Con 'forever stopall' detengo su ejecución
+
+    Modo Cluster:
+
+        "forever start server.js --mode cluster"
+
+        Con 'forever list' debería mostrarse un proceso ejecutándose. Por consola debería haber uno por forever, uno por el proceso maestro, y otros correspondientes a la cantidad de núcleos
+
+        Con 'forever stopall' detengo la ejecución
+        
+- Ejecutar el servidor (con los parámetros adecuados: modo FORK) utilizando PM2 en sus modos fork y cluster. Listar los procesos por PM2 y por sistema operativo
+
+    Modo Fork:
+
+        "pm2 start server.js --name="server1" --watch"
+
+        Con 'pm2 list' debería verse un proceso ejecutándose. Por consola deberían verse dos (uno perteneciente a pm2, y otro al servidor)
+
+        Con 'pm2 delete <id>' eliminamos el proceso
+
+    Modo Cluster:
+
+        "pm2 start server.js --name="server1" --watch -i max"
+
+        Con 'pm2 list' deberían verse tantos procesos como núcleos tenga el cpu. Por consola deberían verse uno correspondiente a pm2 y otros correspondientes a la cantidad de núcleos
+
+        Con 'pm2 delete <id>' eliminamos el proceso
+
+- Para verificar la funcionalidad de nginx ejecutar:
+
+    - 'pm2 start server.js --name="server8080" --watch -- -p 8080'
+    - 'pm2 start server.js --name="server8082" --watch -- -p 8082'
+    - 'pm2 start server.js --name="server8083" --watch -- -p 8083'
+    - 'pm2 start server.js --name="server8084" --watch -- -p 8084'
+    - 'pm2 start server.js --name="server8085" --watch -- -p 8085'

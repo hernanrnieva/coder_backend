@@ -1,2 +1,68 @@
 Clase 31 - Logs & Profiling
 
+Rendimiento en producción:
+
+    Siempre debe buscarse un redimiento óptimo con un tiempo de inactividad mínimo. Qué se puede hacer para optimizar?
+
+        - Utilizar la compresión de gzip. Puede disminuir los tamaños de los cuerpos de respuestas y así aumentar la velocidad de una app web. Es un middleware de compresión
+        - No utilizar funciones síncronas
+        - Hacer un registro correcto (no bardear y usar console.log o console.err en producción. Ya que son operaciones bloqueantes). Por lo que se puede utilizar registros son:
+
+            - Depuración
+            - Todo el resto
+
+        - Manejar bien las excepciones. cualquier cosa que puede tronar debe tenerse en cuenta con un try catch. Cualquier excepción no chequeada bloquea Express
+        - Establecer el NODE_ENV en producción, para que express almacene en caché plantillas de vista y algunas giladas. Consultar estas variables de entorno toma tiempo, no debería hacerse seguido
+        - Hacer que la app se reinicia automáticamente. Se puede hacer:
+
+            - Teniendo un gestor de procesos para reiniciar la app
+            - Utilizando el sistema init que proporciona su OS para reiniciar el gestor de procesos cuando se bloquea el OS
+
+        - Ejecutar la app en múltiples núcleos. Mejoro el rendimiento y tengo la posibilidad de abrir workers cada vez que se bloquee otro
+        - Almacenar en caché los resultados de las solicitudes, para no repetir operaciones
+        - Configurar el balanceador de carga
+        - Utilizar un proxy inverso. Para balancear carga pero también para seguridad
+
+Loggers:
+
+    Sirven para detectar problemas o análisis en producción. Al haber muchas peticiones concurrentes los logs se mezclan haciendo imposible seguirlas salvo que tengan un IDENTIFICADOR UNICO. Funciona como evidencia
+
+    Log4Js:
+
+        Es de las más utilizadas. Se instala con npm. Se debe configurar con algunos parámetros:
+
+            - miLoggerConsole: usa el apéndice stdout en la salida estándar, los otros dos usan el archivo adjunto
+            - miLoggerFile: escribe en el archivo info.log
+            - miLoggerFile2: en el archivo info2.log
+
+        Después tengo categorías, de error básicamente:
+
+            - default
+            - consola
+            - file
+            - file2
+            - all
+
+        Estos usan los diferentes apéndices para determinar dónde escriben, y usan levels para definir de qué 'tipo' son
+
+        Hay 6 niveles de salida: trace, debug, info, warn, error, fatal
+        Los niveles que se imprimen son desde el especificado en las categorías para abajo. Por ejemplo, si es warn, se imprime solo warn, error, y fatal
+
+    Winston:
+
+        Soporte para múltiples transportes diseñanada para el registro simple y universal. Un transporte es básicamente un dispositivo que nos permite almacenar mensajes personalizados de seguimiento (al igual que console.log), en un archivo plano o desplegado por consola. Cada uno tiene diferentes niveles.
+
+        Estos son:
+
+            - silly
+            - debug
+            - verbose
+            - info
+            - warn
+            - error
+
+        Se imprime el elegido y los de mayor prioridad, siempre. Se puede imprimir con logger.log('level', 'message')
+
+    Pino:
+
+        Es la más moderna. Se le hace un require, se le asigna un level y este logger provee los métodos de logging básicamente. Se le puede pasar un merging object o un message (ver ejemplo)

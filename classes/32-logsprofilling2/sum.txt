@@ -1,2 +1,28 @@
 Clase 32 - Rendimiento de nuestro servidor
 
+Artillery:
+
+    Dependencia de node para realizar test de cargas a servidores. Se usa para enviar aplicaciones escalables que se mantengan eficaces y resistentes bajo cargas elevadas. Se puede usar para:
+
+        - Pruebas de carga
+        - Pruebas funcionales
+
+    Se utiliza solo en el back end
+
+Profiling:
+
+    Análisis de rendimiento. Investigación del comportamiento de un programa usando info reunida desde el análisis dinámico del mismo. Averigua el tiempo dedicado a la ejecución de diferentes parte sdel programa para detectar puntos del programa. Puede dar distintas salidas
+
+    Hay build in profilers. Que registran toda la info sobre las funciones y cuanto lleva ejecutarlas en un archivo de registros. Node también tiene un profiles, pero en vez de analizar los archivos de logs simplemente recopila toda la info en estos archivos de log. Significa que necesita una herramienta separada para hacer esto más legible
+
+Curl:
+
+    Línea de comandos para transferir datos con URL. Se usa en autos, tvs, móviles, etc
+
+Autocannon:
+
+    Similar a Artillery, ayuda a realizar test de carga
+
+0x:
+
+    Dependencia que perfila y genera un gráfico de flama interactivo para un proceso node

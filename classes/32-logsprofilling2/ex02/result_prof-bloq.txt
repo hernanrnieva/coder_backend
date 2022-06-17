@@ -1,0 +1,51 @@
+Statistical profiling result from bloq-v8.log, (5008 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   3530   70.5%          C:\Windows\SYSTEM32\ntdll.dll
+   1475   29.5%          C:\Program Files\nodejs\node.exe
+      1    0.0%          C:\Windows\System32\KERNEL32.DLL
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+      1    0.0%   50.0%  Function: ^pipe D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\send\index.js:506:43
+      1    0.0%   50.0%  Function: ^match D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\layer.js:110:39
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+      2    0.0%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+      2    0.0%  100.0%  GC
+   5006  100.0%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   3530   70.5%  C:\Windows\SYSTEM32\ntdll.dll
+
+   1475   29.5%  C:\Program Files\nodejs\node.exe
+   1460   99.0%    C:\Program Files\nodejs\node.exe
+   1408   96.4%      Function: ^pbkdf2Sync node:internal/crypto/pbkdf2:68:20
+   1402   99.6%        Function: ^<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\index.js:35:23
+   1402  100.0%          Function: ^handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\layer.js:86:49
+   1385   98.8%            Function: ^next D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\route.js:116:16
+     17    1.2%            LazyCompile: ~next D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\route.js:116:16
+     26    1.8%      LazyCompile: ~pbkdf2Sync node:internal/crypto/pbkdf2:68:20
+     23   88.5%        LazyCompile: ~<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\index.js:35:23
+     16   69.6%          Function: ^handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\layer.js:86:49
+     16  100.0%            LazyCompile: ~next D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\route.js:116:16
+      7   30.4%          LazyCompile: ~handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\layer.js:86:49
+      7  100.0%            LazyCompile: ~next D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\route.js:116:16
+      3   11.5%        LazyCompile: ~<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\index.js:19:21
+      3  100.0%          LazyCompile: ~handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\layer.js:86:49
+      3  100.0%            LazyCompile: ~next D:\hernan\coder\backend\classes\32-logsprofilling2\ex02\node_modules\express\lib\router\route.js:116:16
+

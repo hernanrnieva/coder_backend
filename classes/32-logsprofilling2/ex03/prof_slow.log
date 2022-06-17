@@ -1,0 +1,81 @@
+Statistical profiling result from slow.log, (2479 ticks, 0 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   2016   81.3%          C:\Windows\SYSTEM32\ntdll.dll
+    440   17.7%          C:\Program Files\nodejs\node.exe
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+     18    0.7%   78.3%  LazyCompile: *calcularRandoms D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:4:25
+      5    0.2%   21.7%  RegExp: [\u001B\u009B][[\]()#;?]*(?:(?:(?:(?:;[-a-zA-Z\d\/#&.:=?%@~_]+)*|[a-zA-Z\d]+(?:;[-a-zA-Z\d\/#&.:=?%@~_]*)*)?\u0007)|(?:(?:\d{1,4}(?:;\d{0,4})*)?[\dA-PR-TZcf-ntqry=><~]))
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+     23    0.9%  100.0%  JavaScript
+      0    0.0%    0.0%  C++
+     22    0.9%   95.7%  GC
+   2456   99.1%          Shared libraries
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   2016   81.3%  C:\Windows\SYSTEM32\ntdll.dll
+
+    440   17.7%  C:\Program Files\nodejs\node.exe
+    362   82.3%    C:\Program Files\nodejs\node.exe
+    228   63.0%      Function: ^handleWriteReq node:internal/stream_base_commons:45:24
+    228  100.0%        Function: ^writeGeneric node:internal/stream_base_commons:147:22
+    163   71.5%          LazyCompile: *_write node:internal/streams/writable:283:16
+    163  100.0%            Function: ^Writable.write node:internal/streams/writable:333:36
+     58   25.4%          Function: ^Socket._writeGeneric node:net:791:42
+     58  100.0%            Function: ^Socket._write node:net:828:35
+      7    3.1%          LazyCompile: *writeOrBuffer node:internal/streams/writable:365:23
+      7  100.0%            Function: ^_write node:internal/streams/writable:283:16
+     69   19.1%      LazyCompile: *calcularRandoms D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:4:25
+     69  100.0%        Function: ^<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:15:26
+     69  100.0%          Function: ^handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\layer.js:86:49
+     69  100.0%            Function: ^next D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\route.js:116:16
+     13    3.6%      Function: ^stringify D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\response.js:1145:20
+     13  100.0%        Function: ^json D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\response.js:250:25
+     13  100.0%          Function: ^<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:15:26
+     13  100.0%            Function: ^handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\layer.js:86:49
+      7    1.9%      C:\Program Files\nodejs\node.exe
+      6   85.7%        LazyCompile: *formatProperty node:internal/util/inspect:1810:24
+      3   50.0%          LazyCompile: *formatRaw node:internal/util/inspect:820:19
+      3  100.0%            LazyCompile: *formatValue node:internal/util/inspect:745:21
+      3   50.0%          LazyCompile: *formatArray node:internal/util/inspect:1634:21
+      3  100.0%            Function: ^formatRaw node:internal/util/inspect:820:19
+      1   14.3%        LazyCompile: ~<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:27:33
+      1  100.0%          LazyCompile: ~onceWrapper node:events:636:21
+      1  100.0%            LazyCompile: ~emit node:events:475:44
+      5    1.4%      Function: ^getColorDepth node:internal/tty:106:23
+      5  100.0%        Function: ^value node:internal/console/constructor:300:20
+      5  100.0%          Function: ^value node:internal/console/constructor:321:20
+      5  100.0%            Function: ^log node:internal/console/constructor:359:6
+      4    1.1%      Function: ^update node:internal/crypto/hash:95:40
+      4  100.0%        Function: ^entitytag D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\etag\index.js:39:20
+      4  100.0%          Function: ^etag D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\etag\index.js:70:15
+      3   75.0%            Function: ^generateETag D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\utils.js:273:32
+      1   25.0%            LazyCompile: *send D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\response.js:111:25
+     17    3.9%    LazyCompile: *calcularRandoms D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:4:25
+     17  100.0%      Function: ^<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:15:26
+     17  100.0%        Function: ^handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\layer.js:86:49
+     17  100.0%          Function: ^next D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\route.js:116:16
+     17  100.0%            Function: ^dispatch D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\route.js:98:45
+     15    3.4%    Function: ^<anonymous> D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\index.js:15:26
+     15  100.0%      Function: ^handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\layer.js:86:49
+     15  100.0%        Function: ^next D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\route.js:116:16
+     15  100.0%          Function: ^dispatch D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\route.js:98:45
+     12   80.0%            LazyCompile: *next D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\index.js:177:16
+      3   20.0%            Function: ^handle D:\hernan\coder\backend\classes\32-logsprofilling2\ex03\node_modules\express\lib\router\layer.js:86:49
+

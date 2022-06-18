@@ -230,6 +230,30 @@ if(MODE == 'cluster' && cluster.isPrimary) {
         // }).repeat(1000))
     })
 
+    app.get('/infoConsole', (req, res) => {
+        logInfo(`URL: ${req.url} & METHOD: ${req.method}`)
+        console.log({
+            args: args,
+            platformName: process.platform,
+            nodeVersion: process.version,
+            memoryUsed: process.memoryUsage(),
+            execPath: process.title,
+            processId: process.pid,
+            projectFolder: process.cwd(),
+            cpus: os.cpus().length
+        })
+        res.json({
+            args: args,
+            platformName: process.platform,
+            nodeVersion: process.version,
+            memoryUsed: process.memoryUsage(),
+            execPath: process.title,
+            processId: process.pid,
+            projectFolder: process.cwd(),
+            cpus: os.cpus().length
+        })
+    })
+
     app.get('/infoC', compression(), (req, res) => {
         logInfo(`URL: ${req.url} & METHOD: ${req.method}`)
         res.json(JSON.stringify({

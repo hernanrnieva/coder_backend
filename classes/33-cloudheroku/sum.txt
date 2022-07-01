@@ -1,0 +1,26 @@
+Clase 33 - Productos Cloud: Heroku
+
+PAAS:
+
+    Platforms as a service. Son entornos de desarrollo e implementación completos en la nube. Permiten generar todo tipo de aplicaciones, sustentando todo el ciclo de vida de las apps. Permite evitar el gasto y complejidad que suponen la compra y administración de licencias de software, infraestructura de apps, etc.
+
+    Escenarios habituales:
+
+        - Framework de desarrollo: por ejemplo las funciones Lambda de AWS. Permite a los devs crear apps usando componentes de software integrados
+        - Análisis o inteligencia artificial
+        - Servicios adicionales
+
+    Ventajas:
+
+        - Menos tiempo de programación
+        - Más funcionalidad de desarrollo sin incorporar más personal
+        - Desarrollo para varias plataformas con más facilidad
+        - Usar herramientas sofisticadas a un precio asequible
+        - Colaboración en equipos de dev distribuidos geográficamente
+        - Administrar el ciclo de vida de las apps con eficacia
+
+Heroku:
+
+    Paas que ofrece servidio para alojar e implementar apps. Corren desde un sv usando Heroku DNS Server, para apuntar al dominio de la app. Cada aplicación corre sobre un motor a través de una "red de bancos de prueba" que consta de varios servidores. El servidor Git de Heroku gestiona los repos de las apps que son subidas por los usuarios
+
+    

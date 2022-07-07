@@ -1,2 +1,28 @@
 Clase 37 - Versiones y paquetes
 
+Administradores de versiones:
+
+    NVM:
+    
+        Script bash simple para administrar múltiples versiones activas de Node en nuestro sistema. Permite instalar múltiples versiones de node. Admite la ejecución de una versión específica de node
+
+            - nvm list available: me lista todo
+            - nvm install node xx.xx.xx: instala esa versión
+            - nvm use node xx.xx.xx: paso a usar esa versión
+            - nvm run node xx.xx.xx: me ejecuta esa versión
+
+    Administradoes de paquetes:
+    
+        Administran las versiones de paquetes que podríamos llegar a usar, básicamente se encargan del tema de las dependencias. Ayuda a especificar la biblioteca como justamente dependencias para su aplicación
+
+        Ejemplos:
+
+            - NPM: ya bastante conocido
+            - Yarn: también es administrador de proyectos en general
+
+                Uso, desde el directorio raíz:
+                
+                    yarn set version latest && yarn init -y
+                    yarn add <package>
+
+            - PNPM: crea un diseño no plano de node_modules, que utiliza enlaces simbólicos para crear una estructura anidada de dependencias. Permite ahorrar gigabytes de espacio en disco

@@ -1,0 +1,34 @@
+Clase 38 - Arquitectura de capas
+
+Es un patrón de desarrollo de software donde se separan las repsponsabilidades en capas. El objetivo es separar repsponsabilidades entre componentes, mediante mayor segmentación. Se suele contener 3 capas, después puede aumentar
+
+Capas principales de Node:
+
+    Servicio:
+
+        Maneja la lógica de negocios de la app. Significa que los datos son transformados o calculados para cumplir con los requerimientos del cliente. Accede a los datos sólo a través de la capa de persistencia
+
+    Persistencia:
+
+        Accede a la base de datos para crear, editar, borrar datos. No se deben ecnontrar nada de cálculos o lógica de negocios, sino todo más relacionado a infraestructura del servidor
+
+Movimiento entre capas:
+
+    Arranca en la capa de presenación, donde el usuario hace click y de ahí viaja a...
+    Capa de ruteo, donde se llama a...
+    Capa de servicio (que a su vez es aguantado desde el API para recibir la respuesta). Acá se transforman o calculan los datos. Y se envía a...
+    Capa de persistencia, donde se modifican los datos existentes
+
+    Preferentemente esto último debería ser accedido con solicitudes asincrónicas. Los datos, las solicitudes, y las respuestas, NO saltean capas
+
+Implementación:
+
+    Usamos 5 componentes:
+
+        - Server: inicia la app y carga los routers
+        - Router: contiene los métodos disponibles para cada recurso de la aplicación y sendas mediante los cuales se los accede
+        - Controller: contiene las funciones que resolverán cada petición que llegue a cada ruta
+        - Servicio: contiene las reglas con la lógica de negocio
+        - DAO: acceso a datos
+
+    El server es la cara visible del servidor. En las capas de ruteo es donde encontraremos referencias a la naturaleza de cliente-servidor. Los controladores constituyen la interfaz entre la capa de ruteo y la capa de negocios. Los servicios son la Capa de Negocios. Acá se hacen todas las validaciones y toma de decisiones para cumplir estas reglas. Normaaaalmente son js puro, sin librerías externas. Los daos constituyen la capa de persistencia y son los lugares donde se encontrarán referencias al almacenamiento de datos

@@ -1,2 +1,118 @@
-Clase 39 - Arquitectura del servidor: diseño
+Clase 39 - Arquitectura del servidor: Diseño
 
+Buenas prácticas:
+
+    Tener un buen punto de partida facilita todo a futuro: código legible y efectivo, facilidad para implementar nueva funcionalidad
+
+    Los objetivos son:
+
+        - Código legible
+        - Fragmentos de código reutilizable
+        - Evitar repetición
+        - Agregar funcionalidades nuevas sin interrumpir código existente
+
+    Vamos a tener en cuenta un conjunto de aspectos al crear aplicaciones web con Node:
+
+        - Adoptar un enfoque por capas: los frameworks como express permiten definir controladores de ruta como funciones de devolución de llamada. Esto permite pasar toda la lógica a nivel negocio a lugares diferentes que no sean la app en sí. Podemos tomar una estructura de carpeta:
+
+            src
+                app.js
+                /api
+                /config
+                /services
+                /models
+                /scripts
+                /subscribers
+                /test
+        
+        - Modelos de editor/suscriptor:
+
+            Es un patrón de intercambio popular en el que intervienen dos entidades:
+
+                - Editores: envían mensajes a través de canales específicos sin conocer a los receptores
+                - Suscriptores: reciben los mensajes y realizan acciones acorde a lo que reciban
+
+        - Código limpio y fácil de leer:
+
+            Usar un formateador y un linter de código:
+
+                - El linter busca y advierte sobre código sintáctico erróneo
+                - Un formateador de código trabaja con aspectos más estilísticos del código
+
+            También podemos usar guías de estilo de JS que usan grandes como google. Además también es útil agregar comentarios que aporten
+        
+        - Escribir código asincrónico:
+
+            Js es conocido por sus callbacks. A medida que estos se apilan, el código se vuelve más difícil de manejar
+
+            Para resolver esto ahora están las Promises y el async/await, que simplifican aún más todo
+
+        - Archivos de configuración y variables de entorno:
+
+            Tener una carpeta de configuración donde se guarden opciones de configuración agrupadas según su uso
+
+            Cosas como la URL a las bases de datos se almacenan en archivos .env como variables de entorno. No debería agregarse a git
+
+            Se suele importar todas las variables del .env (junto con otras opciones y configuraciones predefinidas) en los archivos de config y exponerlos como un objeto al resto de la app
+
+        - Testing, logging y manejo de errores:
+
+            El testing es una parte integral de cualquier app. Permite probar validez, precisión y solidez de nuestro código. Las pruebas unitarias forman la base de la mayoría de las configuraciones de prueba. Acá se prueba todo de forma aislada
+
+            El logging bien implementado permite registrar información importante y comprender los diversos aspectos de la precisión y las métricas de rendimiento de la app
+
+            Debemos manejar las excepciones usando bloques try/catch. Así se mantienen las cosas estables, se facilita la depuración, y se evita una mala experiencia para el usuario final
+
+        - Compresión de código y tamaño de archivo:
+
+            Gzip es un formato de archivo sin péridads que se utilizar para comprimir archivos en una transferencia de red más rápida. También es importante controlar el código de la interfaz para estar al tanto del tamaño de nuestros HTML, CSS y JS. Pueden usarse herramientas como HTMLMinifier, CSSNano y UglifyJS antes de servir
+
+        - Inyección de dependencia:
+
+            Es un patrón de diseño de software que pasa dependencias como parámetros a nuestros módulos en lugar de requerir o crear específicos dentro de ellos
+
+        - Soluciones de terceros:
+
+            Es importante ser inteligente y responsable con cada paquete que se importe. Se debe conocer el propósito, las fortalezas, y las debilidades de lo que se importa
+
+        - Usar herramientas de monitoreo de apps:
+
+            Por ejemplo, ScoutAPM. Esto nos brinda información en tiempo real para identificar y resolver problemas antes de que el cliente los vea. Por ejemplo, las rutas que reciben mas carga, evaluar métricas de desempeño, problemas de calidad, cuellos de botella, errores comunes, etc.
+
+Patrón MVC:
+
+    Patrón arquitectónico que separa una app en Modelo, Vista, y Controlador
+
+    - Controlador: se encarga de la solicitud del cliente, la maneja y devuelve una respuesta
+    - Modelo: responsable del dominio de datos de la app. Almacenan, recuperan, y actualizan datos de la db
+    - Vista: compila y renderiza en HTML simple. Interfaz de usuario de nuestra app, donde el usuario recibe respuesta de sus solicitudes
+
+    HTML on Wire:
+
+        Hay diferentes formas de generar un HTML en patrón MVC. On wire genera las vistas en el backend, por ejemplo con un motor de plantillas. De esta forma, no se tiene un API REST por un lado y un frontend por el otro, sino que está todo en el backend, incluídas las vistas. Son renderizadas por el controlador
+
+        Se suele usar esta estructura:
+
+            src/
+                --controllers/
+                --models/
+                --views/
+                --routes/
+
+            Tenemos las 3 carpetas de los componentes MVC en los archivos de rutas, en la carpeta homónima. Desde dentro, ejecutan al método correspondiente del controlador. Así queda mejor separada cada responsabilidad
+
+    Data on Wire:
+
+        Las vistas se realizan por separado, por ejemplo con React. Lo que devuelve el controlador es un json con los datos, en lugar de HTML. Lo único que cambia es la forma en que llega a los usuarios la respuesta de las solicitudes
+
+Patrones de disño:
+
+    Son formas de estructurar el código de nuestra solución, de una forma normalmente conocida con solución conocida
+
+    IIFE:
+
+        Expresiones de función inmediatamente invocadas, permite definir y llamar una función al mismo tiempo. Es útil para, por ejemplo, simular propiedades privadas en clases:
+
+            (function(parametros) {
+                console.log('hola')
+            })(argumentos);

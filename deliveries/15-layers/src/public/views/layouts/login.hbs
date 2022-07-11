@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> header}}
+<body class="bg-dark">
+    <div class="container mt-3">
+        <div class="rounded mb-3 pt-2 pb-1 pl-4 pr-4 bg-light bg-gradient text-center">
+            <h2 class="mb-3 mt-3" style="color: green">Welcome, please login:</h2>
+            <form action="/login" method="post" autocomplete="off">
+                <label for="email"><b>Email</b></label>
+                <input id="email" class="form-control mb-3" type="text" name="email" required/>
+                <label for="password"><b>Password</b></label>
+                <input id="passowrd" class="form-control mb-3" type="password" name="password" required/>
+                <button class="btn btn-success mt-3 mb-5">Login</button>
+            </form>
+        </div>
+        <div class='text-center'>
+            <button
+                class='btn btn-secondary my-3'
+                onclick="location.href = '/register'"
+            >Go to Register</button>
+        </div>
+    </div>
+</body>
+{{> footer}}

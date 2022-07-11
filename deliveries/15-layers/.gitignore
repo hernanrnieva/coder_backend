@@ -1,0 +1,11 @@
+**/node_modules
+**/__base
+**/__db
+messages.txt
+**.sqlite
+**/sessions
+**/nginx
+**/9324.0x
+flamegraph.html
+error.log
+warn.log

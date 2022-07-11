@@ -114,5 +114,9 @@ Patrones de disño:
         Expresiones de función inmediatamente invocadas, permite definir y llamar una función al mismo tiempo. Es útil para, por ejemplo, simular propiedades privadas en clases:
 
             (function(parametros) {
-                console.log('hola')
+                console.log(argumentos)
             })(argumentos);
+
+    Singleton:
+
+        Declarar una instancia sola de una clase. Idealmente puedo tener un método getInstance() dentro de la clase que juegue con una variable global DENTRO del mismo módulo. Así lo único que evito es crearla si no la llego a necesitar

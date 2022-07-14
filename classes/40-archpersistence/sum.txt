@@ -1,0 +1,89 @@
+Clase 40 - Arquitectura del servidor: Persistencia
+
+El patrón DAO permite separar la lógica de acceso a datos, de tal forma que el DAO encapsula toda la lógica de acceso de datos al resto de la aplicación
+
+Problemas de acceso a los datos:
+
+    - Implementación del formato de la info puede variar según la fuente de los datos
+    - Implementar la lógica de acceso a los datos en la lógica de negocio implicaría lidiar con dos lógicas diferentes
+    - Si tenemos múltiples fuentes de datos, o estas pueden variar, tendríamos que implementar distintas formas de acceder a las distintas fuentes de datos
+
+    Soluciones:
+
+        - DAOs: separo las dos lógicas
+
+    Vocabulario:
+
+        - BusinessObject: objeto con lógica del negocio
+        - DAO: lo que sabemos
+        - DTO: objeto plano que implementa el patrón de diseño homónimo, ysado para transmitir info entre las dos capas
+        - Datasource: representa la forma abstracta de la fuente de datos
+
+    Pasos del DAO:
+
+        1. La app encapsula la info en un DTO
+        2. El DAO toma el DTO, extrae la info y construye la lógica necesaria para comunicarse con el Datasource
+        3. DS recibe la info en el formato adecuado para tratarla
+
+    Al revés:
+
+        1. La app pide datos al DAO
+        2. El DAO pide al DS
+        3. Se envía la info al DAO
+        4. El DAO la formatea en el DTO y la pasa a la app
+
+    Patrón Factory:
+
+        Sirve para solucionar este problema en el que usando DAOs nos encontramos con el problema de que podemos tener distintos tipos de datos. El factory importa todos los DAOs y devuelve la instancia del que se necesite
+
+    Patrón DTO:
+
+        Tiene como finalidad crear un POJO con una serie de atributos que puedan ser enviados o recuperados del servidor en una sola invocación, de tal forma que un DTO puede contener información de múltiples fuentes o tablas y concentrarlas en una única clase bien simplona
+
+        Puede servir para evitar recabar info que capaz no me sirve o no es necesaria
+
+        Tiene que cumplir unas reglas:
+
+            - Sin lógica. Tiene que sooolamente guardar datos: atributos necesarios, getters, y setters
+            - TIENEN que ser serializables, también sus atributos
+
+    Patrón Factory:
+
+        Permite centralizar la lógica de creación de objetos a partir de parámetros
+
+    Patrón Repository:
+
+        Se comporta como una colección de datos, implementando los métodos que se esperen de ella, abstrayendo un poco de los datos en sí
+
+        vs. DAO:
+
+            El DAO está mucho más cerca de la base de datos
+            El patrón repository está al mismo nivel que la capa del dominio/modelo
+            El DAO es para guardar y obtener, exclusivamente, nada extra
+
+    ORM:
+
+        Object Relational Mapping. Covierte datos entre el sistema de tipos del lenguaje de progranmación y la base de datos. Va dirigido solamente a bases de datos relacionales. Algo de vocablo:
+
+            - Object: objetos que podemos usar en el lenguaje
+            - Relational: sistema de gestor de base de datos
+            - Mapping: conexión entre los objetos y las tablas
+
+        Ventajas:
+
+            - Portable
+            - Abstracto
+            - Anidación de datos
+        
+        Desventajas:
+
+            - Lento
+            - Complejo
+    
+        Sequelize:
+
+            ORM basado en promesas de Node. Tiene los mismos alcances que mongoose, pero para bases relacionales
+    
+    ODM:
+
+        ORM para bases de datos no relacionales. Por ejemplo, mapea un modelo de objeto y una base de datos NoSQL. MongoDB expresa los datos que se guardarán en un formato similar a JSON y los guarda como un documento. ODM es la función de asociar tal documento con un objeto en un lenguaje de progranmación

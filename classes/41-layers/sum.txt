@@ -1,0 +1,41 @@
+Clase 41 - Desarrollo de un servidor web basado en capas
+
+Stack MERN:
+
+    Stack full javascript, usado del lado del front y back.
+
+    MongoDB:
+
+        Base de datos relacional, flexible, registros similares a JSON
+
+    ExpressJS:
+
+        Framework de node para escribir aplicaciones simplificadas, rápidas, flexibles, y seguras, del lado del servidor
+    
+    ReactJS:
+
+        Biblioteca de código abierto utilizada par desarrollar front end. Aplicaciones rápidas y escalables
+
+    NodeJS:
+
+        Entorno de ejecución open source de Javascript, diseñado para ejecutarse del lado del servidor. Orientado a eventos asíncronos y diseñado para crear aplicaciones escalables
+
+    Ventajas:
+
+        - Apps flexibles y escalables
+        - Reduce los gastos, ya que es todo JS
+        - Facilita el proceso de trabajar con MVC
+        - Ayuda a ecitar el trabajo pesado innecesario
+        - Frameworks basados en código abierto
+    
+CORS:
+
+    Intercambio de Recursos de Origen Cruzado. Sirve para permitir o restringir los recursos solicitados en un servidor web, dependiendo de dónde salió la petición de origen. Por ejemplo, limitar a ciertos dominios
+
+    Por ejemplo:
+
+        Estamos en una página, haciendo referencia a otra imagen, no podemos recuperar esa imagen a menos que la segunda permita compartir orígenes cruzados con la primera. Esto está basada en el encabezado origin que viene en el HTTP
+
+    Se configura con el módulo CORS. Se configura el middleware con app.use(cors()), esto afecta a toda la app. Sino lo hacemos con una ruta, agregándolo en su declaración
+
+    Podemos usar las configuraciones de CORS (origin, optionSuccessStatus). Y después llamamos a cors(options)

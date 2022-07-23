@@ -13,5 +13,14 @@ Clientes HTTP:
 
         También puedo configurar el req.on('data') o 'error' para ver cosas. Con req.end() finalizo la request
 
-        Para hacer un POST hago lo mismo pero configuro un poco mejor los headers (nada complejo)
-        
+        Para hacer un POST hago lo mismo pero configuro un poco mejor los headers (nada complejo). Con req.write(data) guardamos la data
+
+    Externos:
+
+        Axios:
+
+            Basada en promesas, se instala con npm. Incluye también funciones para interceptar datos de solicitud y respuesta, y transformar esto a JSON
+
+        Got:
+
+            También basada en promesas, es el más popular para node. Se instala también con npm 

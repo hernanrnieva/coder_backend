@@ -1,1 +1,17 @@
-Clase 42 - Testing de nuestra API
+Clase 42 - Testeo de funcionalidades
+
+Clientes HTTP:
+
+    Se pueden usar dos formas de realizar solicitudes HTTP desde node:
+
+        - Internamente: módulo HTTP o HTTPS que viene en la librería estándar de node
+        - Externamente: paquetes de NPM (como Axios o Got) instalables como cualquier módulo
+
+    Internos:
+
+        Se requiere con 'https', se usa con const req = http.request(options, cb(res)), siendo options los puertos, el path, y el método
+
+        También puedo configurar el req.on('data') o 'error' para ver cosas. Con req.end() finalizo la request
+
+        Para hacer un POST hago lo mismo pero configuro un poco mejor los headers (nada complejo)
+        

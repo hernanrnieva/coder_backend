@@ -1,0 +1,19 @@
+{
+  "type": "module",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "express": "^4.18.1",
+    "got": "^12.1.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "ex03",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

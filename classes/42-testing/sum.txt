@@ -24,3 +24,68 @@ Clientes HTTP:
         Got:
 
             También basada en promesas, es el más popular para node. Se instala también con npm 
+
+Testing de servidores:
+
+    Parte fundamental del desarrollo de software. Verificar respuestas, etc. Debe probarse todo previo al funcionamiento real de la aplicación
+
+    TDD:
+
+        Test Driven Development:
+
+            Antes de programar, se escriben pruebas, se prueba y falla, se hace que pase la prueba, se hacer refactor. Ese es el ciclo de TDD. Permite hacer software más modular y flexible
+
+            Problemas:
+
+                - Dificultades a la hora de hacer test funcionales o de integración
+                - Test triviales que a veces provocan una falsa sensación de seguridad
+                - Deben mantenerse al igual que el código, haciendo que se genere trabajo extra
+                - Difícil de introducir una vez que se arrancó sin él
+                - Todos los developers deben estar alineados haciendo lo mismo
+            
+                Para evitar todo esto nace BDD y se usan otras técnicas como los Test de Aceptación
+
+        Behavior Driven Development:
+
+            Basado en BDD, utilizando sus mejores prácticas. Prueba escenarios en vez de unidades o clases, y el comportamiento de las clases a la hora de cumplir esos escenarios
+
+    Mocha:
+
+        Framework de pruebas para JS. Se utiliza para pruebas unitarias o TDD. Se puede usar junto con el módulo assert de node. Se instala con npm i -D mocha
+
+        Creamos un archivo index.test.js. Requerimos TODOS los módulos. Las pruebas strict del módulo assert nor permitirá usar las pruebas de igualdad especiales que se recomiendad desde node
+
+            - describe() se usa para agrupar pruebas similares
+            - it() contiene el código de prueba
+
+            Idealmente deberían ser con nombres descriptivos:
+
+                describe([String with Test Group Name], function() {
+                    it([String with Test Name], function() {
+                        [Test Code]
+                    })
+                })
+
+            Con assert tengo varias funciones que me ayudan a retornar lo que se necesite. También se puede usar before, beforeEach, after, afterEach, para realizar acciones antes o después de cada prueba
+
+            Se pueden agregar como script de test usando mocha index.test.js
+
+        Con Chai y SuperTest:
+
+            SuperTest:
+
+                Proporciona alta abstracción para probar solicitudes HTTP, perfecto para APIs. Se pueden realizar solicitudes usando SuperTest directamente, sin necesidad de un servidor en ejecución. se puede integrar muy bien con otras suites de prueba
+
+            Chai:
+
+                Librería de assertions. No es esctrictamente necesario pero es más expresivo y legible para las pruebas
+
+    Creando un proyecto:
+
+        npm i -D mocha supertest chai
+
+        Importamos con:
+
+            const request = require('supertest')('http://localhost:8080')
+            const expect = require('chai').expect
+            const generator = require('../generator/object)

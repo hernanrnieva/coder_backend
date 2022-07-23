@@ -1,0 +1,47 @@
+{
+  "name": "d17",
+  "version": "1.0.0",
+  "description": "16th delivery for CoderHouse's Backend Dev. course",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "npm run mocha && npm run axios",
+    "mocha": "mocha tests/mocha.test.js",
+    "axios": "node tests/axios.test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hernanrnieva/backend_d17.git"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1",
+    "axios": "^0.27.2",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "supertest": "^6.2.4"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "child_process": "^1.0.2",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "express-handlebars": "^5.3.5",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "log4js": "^6.5.2",
+    "minimist": "^1.2.6",
+    "mongoose": "^6.3.4",
+    "normalizr": "^3.6.2",
+    "passport": "^0.6.0",
+    "passport-local": "^1.0.0",
+    "socket.io": "^4.5.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hernanrnieva/backend_d17/issues"
+  },
+  "homepage": "https://github.com/hernanrnieva/backend_d17#readme"
+}

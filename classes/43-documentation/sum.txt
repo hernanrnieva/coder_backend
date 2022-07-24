@@ -1,2 +1,61 @@
 Clase 43 - Documentación de APIs
 
+API:
+
+    Interfaz de programación de aplicaciones. Conjunto de definiciones y protocolos para desarrollar e integrar el software de apps. Permiten a los productos comunicarse con otros, sin saber cómo están implementados. Otorgan flexibilidad: simplifican diseño, administración, y uso de apps
+
+    Las APIs públicas representan un valor comercial único, porque simplifican y amplían la forma en que se conecta con sus partners y, además, pueden rentabilizar sus datos
+
+    Enfoques:
+
+        - Privado: sólo usadas internamente dentro de una app
+        - De partners: sólo se comparte con partners empresariales
+        - Público: accesible para todos
+
+API REST:
+
+    Conjunto de restricciones a una API:
+
+        - Cliente-servidor: el server controla los datos, y el cliente se encarga de manejar las interacciones del usuario
+        - Sin estado: cada petición que recibe el servidor debería ser independiente y contener todo lo necesario para ser procesada
+        - Cacheable
+        - Interfaz uniforme: define una interfaz gráfica para administrar cada interacción que se produzce entre el cliente y el servidores de manera uniforme, lo que simplifica y separa la arquitectura
+        - Sistema de capas
+
+    Métodos:
+
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+        - HEAD
+        - OPTIONS
+
+        Se dice que los seguros son aquellos que no modifican recursos. Los otros son idempotentes.
+
+    Catacterísticas:
+
+        - Uso de hipermedios
+        - Independencia del lenguaje
+        - Los recursos de una API REST s identifican por medio de URI (similar a una URL)
+        - Las APIs deben manejar cualquier error que se produzca
+
+    Generador de proyectos con Express:
+
+        Podemos generar estructuras de una API Rest, con Express generator. Usando estos módulos:
+
+            - Debug
+            - Morgan
+
+            Debug:
+
+                Lo usa para registrar información sobre las coincidencias de rutas, funciones de middleware usadas, etc. Es como una versión optimizadas de console.log
+
+                Podemos hacer set DEBUG=express:* para setear la variable de entorno que permite ver todos los registros internos utilizados en Express
+
+                Para utilizar DEBUG en una app genera con express usamos el comando DEBUG=app:* (siendo app el nombre de la app)
+
+            Morgan:
+
+                Se puede usar como middleware a nivel app con app.use(morgan('dev'))

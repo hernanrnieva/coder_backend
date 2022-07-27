@@ -59,3 +59,38 @@ API REST:
             Morgan:
 
                 Se puede usar como middleware a nivel app con app.use(morgan('dev'))
+
+Manejo y documentación de APIs:
+
+    Se deben cumplir ciertos requisitos para diferenciar una buena documentación "simplificada" a comparación de una chota
+
+    Es una de las piezas básicas que determina la experiencia de un desarrollador al usar una API
+
+    Swagger:
+
+        Herramienta útil para describir, producir, consumir, y visualizar APIs RESTful. Proporciona una interfaz web gráfica a modo de sandbox, donde podemos testear los endpoints API a la vez que se consulta la doc
+
+        Primero se definen, dentro del campo components/schemas, el esquema de un product, por ejemplo. Al ser un objeto con campos se dfine como 'type: object'. Agregas primero los campos definidos y después las características de cada campo
+
+        En el campo components/requestBodies definimos esquemas de objetos utilizados dentro de los cuerpos de las peticiones y respuestas para evitar redundancia a futuro
+
+        También definimos los paths, y dentro de cada path los métodos. Se puede agregar una descripción, tag para decir a qué submétodos pertenece, y se define las caracteristicas de su petición y respuesta. Pueden incluirse varias respuestas diferentes por cada path
+
+        Deben instalarse las dependencias:
+
+            - express
+            - swagger-express
+            - swagger-ui-express
+
+        Requerimos todo, y creamos unas options con una definition que incluya una openapi y title y description de la api, y otra option api con el path del yaml
+
+        Cargamos una ruta en la que mostrar las docs y le mandamos el middleware de swagger para que genere todo
+
+        Buwnas prácticas:
+
+            - Ampliar la descripción de los endpoints de la forma más detallada posible, sin que sea muy técnico
+            - Es preciso intentar evitar abstracciones en la documentación, para tratar de no confundir a los desarrolladores
+            - Dettalar los parámetros y las respuestas esperadas. Evitará sorpresas
+            - Señalar los diversos lenguajes de programación aceptados por la api
+            - Versionado, para evitar alteraciones que puedan afectar funcionalidad ya existente que usa otra gente
+            - Tutoriales como ejemplo. Añadir en cada demostración de código y ofrecer ejemplos de respuestas

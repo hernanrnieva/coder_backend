@@ -1,0 +1,18 @@
+components:
+  requestBodies:
+    NewProduct:
+      type: object
+      required:
+        - title
+        - price
+        - thumbnail
+      properties:
+        title:
+          type: string
+          description: title of the product
+        price:
+          type: number
+          description: price of the product
+      example:
+        title: Calculator
+        price: 144

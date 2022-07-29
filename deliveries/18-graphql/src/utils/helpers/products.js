@@ -25,7 +25,7 @@ const getNewProduct = (product, properties) => {
     const newProduct = {
         id: product.id,
         title: properties.title? properties.title : product.title,
-        proce: properties.price? properties.price : product.price,
+        price: properties.price? properties.price : product.price,
         thumbnail: properties.thumbnail? properties.thumbnail : product.thumbnail,
     }
 

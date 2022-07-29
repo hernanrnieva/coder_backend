@@ -1,2 +1,97 @@
 Clase 44 - GraphQl
 
+Qué es?:
+
+    Alternativa a las API REST creada por Facebook. Lenguaje de consulta y un tiempo de ejecución del servidor para las interfaces de API. Brinda a los servicios solo los datos que quiere. Los desarrolladores puede realizar:
+
+        - Consultas GraphQL: consumir datos, especificando cuáles y cómo recibirlos
+        - Mutaciones GraphQL: escribir o modificar datos en el servidor
+
+    Son rápidas, flexibles, y sencialles. Se pueden implementar con su framework GraphiQL
+
+    Esquemas:
+
+        Definido por tipos de objetos, que definen qué clase de objetos se puede solicitar y sus campos. Cuando ingresan las consultas, se aprueban o rechazan en función del esquema, y se ejecutan las validadas
+
+    Ventajas a nivel empresarial:
+
+        - Establece una fuente única de infomación en una aplicación de GraphQL
+        - Las llamadas a GraphQL se gestionan en un solo recorrida de ida y vuelta
+        - Tipos de datos bien definidos
+        - Un cliente puede solicitar una lista de los tipos de datos disponibles
+        - Pueden evolucionar sin afectar las consultas actuales
+        - Muchas extensiones no se pueden usar con las API REST
+        - No exige arquitectura de aplicación específica, puede incorporarse sobre una API REST actual
+
+    Desventajas:
+
+        - Curva de aprendizaje alta
+        - Delega gran parte de las consultas al servidor
+        - Puede requerir estrategias de gestión de API diferentes a las de REST
+        - El caché es más complejo
+        - Los encargados de mantenimientos además tienen que escribir un esquema de GraphQL
+
+    REST vs GraphQL:
+
+        - Las peticiones contienen toda la info necesaria
+        - Se apoya sobre HTTP
+        - La manipulación de ibjetos es a partir de URI
+        - Los componentes se organizan en un sistema de capas
+    
+    Similitudes con REST:
+
+        - JSON es el formato predeterminado
+        - La implementación del sv se puede hacer en cualquier lenguaje
+        - Dan libertad de implementar el frontend a nivel lenguaje 
+        - Se limitan a definir las peticiones y la forma en la que devuelven datos, no almacenan datos de los clientes
+
+    Resumen:
+
+        - Surge para solucionar problemas de REST
+        - Ambas son las formas más usadas para el diseño del funcionamiento de una API
+        - GraphQL ofrece más flexibilidad gracias a sus consultas, esquemas, y solucionadores
+        - Si nuestras necesidades son implementar y usar de forma fácil una API conviene elegir GraphQL
+        - Debe implementarse bien el caché
+        - Está centrado en mejorar la capacidad de desarrollo de APIs y su adaptación
+        - Siempre se debe analizar con detenimiento los requisitos de la app, el rendimientos, y otros factores para escoger cómo vamos a implementar nuestra API
+
+    Definiendo un esquema:
+
+        type Persona {
+            id: ID!,
+            nombre: String,
+            edad: Int
+        }
+        type PersonaInput {
+            nombre: String,
+            edad: Int
+        }
+        type Query {
+            getPersona(id: ID!): Persona,
+            getPersonas(campo: String, valor: String): [Persona]
+        }
+        type Mutation {
+            createPersona(datos: PersonaInput): Persona,
+            updatePersona(id: ID!, datos: PersonaInput): Persona,
+            deletePersona(id: ID!): Persona
+        }
+
+        Después uso el middleware con:
+
+            - schema: lo que definí arriba
+            - rootValue: las funciones que definí en el esquema
+            - graphiql: si está en true, habilita graphiql
+
+Graphiql:
+
+    IDE de GraphiQL. Ofrece asistencia contextual y proporciona mensajes de error en caso de que la sintaxis de la consulta sea errónea. Está basado en Js y se ejecuta en el navegador
+
+    Para qué?:
+
+        - servicio de idioma oficial
+        - servidor LSP completo y servicio CLI para usar con IDE
+        - modo de espejo codificado
+        - ejemplo de cómo utilizar este ecosistema con GraphiQL
+        - ejemplos de como implementar o extender Graphiql
+
+        El uso puede ser análogo a postman para REST

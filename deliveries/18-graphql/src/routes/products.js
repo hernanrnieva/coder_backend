@@ -1,10 +1,12 @@
-const productController = require('../controllers/products')
+// const productController = require('../controllers/products')
+const graphqlHTTP = require('express-graphql').graphqlHTTP
+const productSchema = require('../data/schemas/product')
+const productRoot = require('../controllers/products')
 
-const productSocket = {
-    sendProducts: (socket) => { productController.sendProducts(socket) },
-    createProduct:  (product, sockets) => { 
-        productController.createProduct(product, sockets)
-    }
-}
+const productRouter = graphqlHTTP({
+    schema: productSchema,
+    rootValue: productRoot,
+    graphiql: true
+})
 
-module.exports = productSocket
+module.exports = productRouter

@@ -24,23 +24,6 @@ class MessageNormalizer{
 
 const messageNormalizer = new MessageNormalizer()
 
-socket.on('product', (data) => {
-    try{
-        document.getElementById('products').innerHTML = data 
-    }catch(e){}
-})
-
-
-function addProduct(e) {
-    const product = {
-        title: document.getElementById('title').value,
-        price: document.getElementById('price').value,
-        thumbnail: document.getElementById('thumbnail').value
-    }
-    socket.emit('product', product)
-    return false
-}
-
 function renderMessage(data) {
     const html = data.map((m, index) => {
         return(`<div><p style="color: brown">

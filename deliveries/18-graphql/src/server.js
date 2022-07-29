@@ -73,21 +73,12 @@ if(MODE == 'cluster' && cluster.isPrimary) {
 
     /* Routing */
     app.use('/', router)
-    const productSocket = require('./routes/products')
     const messageSocket = require('./routes/messages')
 
     /* Socket functionality */
     io.on('connection', (socket) => {
-        /* Existing products emittance */
-        productSocket.sendProducts(socket)
-
         /* Existing messages emittance */
         messageSocket.sendMessages(socket)
-
-        /* New product receipt */
-        socket.on('product', (product) => {
-            productSocket.createProduct(product, io.sockets)
-        })
 
         /* New message receipt */
         socket.on('message', (message) => {

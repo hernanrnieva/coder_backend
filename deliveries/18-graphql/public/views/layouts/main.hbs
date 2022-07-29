@@ -12,7 +12,7 @@
         <div class="jumbotron bg-light bg-gradient">
             <h2 style="color: blue">Insert product data</h2>
             <br>
-            <form onsubmit="return addProduct(this)">
+            <form>
                 <div class="form-group">
                     <label for="title"><b>Title</b></label>
                     <input id="title" class="form-control" type="text" name="title" required/>
@@ -25,7 +25,7 @@
                     <label for="thumbnail"><b>Thumbnail</b></label>
                     <input id="thumbnail" class="form-control" type="text" name="thumbnail" required/>
                 </div>
-                <button class="btn btn-success mt-3 mb-5">Submit</button>
+                <button class="btn btn-success mt-3 mb-5" type="button" onclick="createProduct()">Submit</button>
             </form>
             <div id="products"></div>
             <h2 class="mt-4 mb-4" style="color: blue">Live chat.</h2>
@@ -42,5 +42,6 @@
             </form>
         </div>
     </div>
+    <script src="./js/products.js"></script>
 </body>
 {{> footer}}

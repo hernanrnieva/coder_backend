@@ -7,7 +7,7 @@ const validateProduct = (product) => {
     if(keys != PRODUCT_KEYS)
         throw 'Object does not have the correct amount of properties'
 
-    if(!product.hasOwnProperty('title') || !product.hasOwnProperty('price') || !product.hasOwnProperty('thumbnail'))
+    if(!'title' in product || !'price' in product || !'thumbnail' in product)
         throw 'Object does not have the correct properties'
 
     return product

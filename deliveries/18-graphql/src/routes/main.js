@@ -3,11 +3,13 @@ const mainRouter = express.Router()
 const userRouter = require('./users')
 const testRouter = require('./test')
 const infoRouter = require('./info')
+const productRouter = require('./products')
 const logWarn = require('../logs/loggers').logWarn
 
 mainRouter.use('/', userRouter)
 mainRouter.use('/test', testRouter)
 mainRouter.use('/info', infoRouter)
+mainRouter.use('/productsQl', productRouter)
 
 mainRouter.use((req, res) => {
     logWarn(`Unexisting route attempt: ${req.url}`)

@@ -2,37 +2,47 @@ const hbs = require('handlebars')
 const fs = require('fs')
 const productHelpers = require('../utils/helpers/products')
 const productDao = require('../data/daos/factory/daoFactory').getProductPersistence()
+const logError = require('../logs/loggers').logError
+
 const fileContent = fs.readFileSync('./public/views/partials/table.hbs').toString()
 const template = hbs.compile(fileContent)
 
-const productController = {
-    sendProducts: (socket) => {
-        productDao.getAll().then((data) => {
-            const products = productHelpers.generateProductDtos(data)
-            socket.emit('product', template({products: products}))
-        })
-    },
-    createProduct: async (product, sockets) => {
-        let newProduct
-        try {
-            newProduct = productHelpers.validateProduct(product)
-        } catch(e) {
-            logError(`Invalid product data`)
-        }
-        
-        productDao.getAll().then((data) => {
-            const newId = data.length = 0 ? 1 : data.length + 1
+async function generateHtml() {
+    const products = await getProducts()
+    
+    return template({products: products})
+}
 
-            newProduct.id = newId
-            productDao.save(newProduct).then(() => {
-                productDao.getAll().then((data) => {
-                    const products = productHelpers.generateProductDtos(data)
-                    const string = template({products: products}).toString()
-                    sockets.emit('product', string)
-                })
-            })
-        })
+async function getProducts() {
+    const data = await productDao.getAll()
+    const products = productHelpers.generateProductDtos(data)
+
+    return products
+}
+
+async function createProduct(product) {
+    let newProduct
+    try {
+        newProduct = productHelpers.validateProduct(product.data)
+    } catch(e) {
+        logError(`Invalid product data: ${e}`)
     }
+
+    const data = await productDao.getAll()
+    const newId = data.length = 0 ? 1 : data.length + 1
+    
+    newProduct.id = newId
+
+    await productDao.save(newProduct)
+    const addedProduct = await productDao.getById(newId)
+
+    return addedProduct
+}
+
+const productController = {
+    getProducts,
+    createProduct,
+    generateHtml
 }
 
 module.exports = productController

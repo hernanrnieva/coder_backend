@@ -7,8 +7,7 @@ const validateMessage = (message) => {
     if(keys != MESSAGE_KEYS)
         throw 'Object does not have the correct amount of properties'
 
-    if(!message.hasOwnProperty('author') ||
-       !message.hasOwnProperty('text'))
+    if(!'author' in message || !'text' in message)
         throw 'Object does not have the correct properties'
 
     const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i

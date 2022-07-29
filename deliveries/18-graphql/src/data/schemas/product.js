@@ -14,7 +14,7 @@ const productSchema = buildSchema(`
     }
     type Query {
         getProducts: [Product],
-        generateHtml: String,
+        generateProductHTML: String,
     }
     type Mutation {
         createProduct(data: ProductInput): Product

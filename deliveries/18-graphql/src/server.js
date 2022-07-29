@@ -73,16 +73,16 @@ if(MODE == 'cluster' && cluster.isPrimary) {
 
     /* Routing */
     app.use('/', router)
-    const messageSocket = require('./routes/messages')
+    // const messageSocket = require('./routes/messages')
 
-    /* Socket functionality */
-    io.on('connection', (socket) => {
-        /* Existing messages emittance */
-        messageSocket.sendMessages(socket)
+    // /* Socket functionality */
+    // io.on('connection', (socket) => {
+    //     /* Existing messages emittance */
+    //     messageSocket.sendMessages(socket)
 
-        /* New message receipt */
-        socket.on('message', (message) => {
-            messageSocket.createMessage(message, socket, io.sockets)
-        })
-    })
+    //     /* New message receipt */
+    //     socket.on('message', (message) => {
+    //         messageSocket.createMessage(message, socket, io.sockets)
+    //     })
+    // })
 }

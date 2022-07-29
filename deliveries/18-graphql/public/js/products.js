@@ -29,15 +29,15 @@ function createProduct() {
 
     fetch('/productsQl', options)
     .then(data => {
-        generateHtml()
+        generateProductHTML()
     })
 }
 
-function generateHtml() {
+function generateProductHTML() {
     const graphqlQuery = {
-        "operationName" : "generateHtml",
-        "query": `query generateHtml { 
-            generateHtml
+        "operationName" : "generateProductHTML",
+        "query": `query generateProductHTML { 
+            generateProductHTML
         }`
     }
 
@@ -50,9 +50,9 @@ function generateHtml() {
     fetch('/productsQl', options)
     .then(data => {
         data.json().then((final) => {
-            document.getElementById('products').innerHTML = final.data.generateHtml
+            document.getElementById('products').innerHTML = final.data.generateProductHTML
         })
     })
 }
 
-generateHtml()
+generateProductHTML()

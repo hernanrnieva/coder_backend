@@ -1,53 +1,44 @@
+const hbs = require('handlebars')
+const fs = require('fs')
+const messageHelpers = require('../utils/helpers/messages')
 const messageNormalizer = require('../controllers/normalizr')
 const messageDao = require('../data/daos/factory/daoFactory').getMessagePersistence()
 const logError = require('../logs/loggers').logError
-const messageHelpers = require('../utils/helpers/messages')
+
+const fileContent = fs.readFileSync('./public/views/partials/messages.hbs').toString()
+const template = hbs.compile(fileContent)
+
+async function generateMessageHTML() {
+    const messages = await getMessages()
+
+    return template({messages: messages})
+}
+
+async function getMessages(message) {
+    const data = await messageDao.getAll()
+    const messages = messageHelpers.generateMessageDtos(data)
+
+    return messages
+}
+
+async function createMessage(message) {
+    let newMessage
+    try {
+        newMessage = messageHelpers.validateMessage(message.data)
+    } catch(e) {
+        logError(`Invalid message date: ${e}`)
+    }
+
+    newMessage.date = new Date().toLocaleString()
+    await messageDao.save(newMessage) 
+
+    return newMessage
+}
 
 const messageController = {
-    sendMessages: (socket) => {
-        messageDao.getAll().then((data) => {
-            if(data) {
-                const formattedData = data.map(d => {
-                    delete d["_id"]
-                    return d
-                })
-                const normalized = messageNormalizer.normalizeMessages({
-                    id: 'messages',
-                    messages: formattedData
-                })
-                socket.emit('message', normalized)
-            }
-        })
-    },
-    createMessage: (message, socket, sockets) => {
-        message = messageHelpers.validateMessage(message)
-        if(!message) {
-            logError(`Invalid message data`)
-            socket.emit('eMessage')
-        } else {
-            message["date"] = new Date().toLocaleString()
-            messageDao.getAll()
-            .then((data) => {
-                const newId = data.length > 0 ? data[data.length - 1].id + 1 : 1
-                message["id"] = newId
-                messageDao.save(message)
-                .then(() => { 
-                    messageDao.getAll().then((data) => {
-                        const newData = data.map(d => {
-                            delete d._id
-                            return d
-                        })
-                        const normalized = messageNormalizer.normalizeMessages({
-                            id: 'messages',
-                            messages: newData
-                        })
-                        socket.emit('message', normalized)
-                        sockets.emit('message', normalized)
-                    })
-                })
-            })
-        }
-    }
+    generateMessageHTML,
+    getMessages,
+    createMessage
 }
 
 module.exports = messageController

@@ -7,7 +7,7 @@ const logError = require('../logs/loggers').logError
 const fileContent = fs.readFileSync('./public/views/partials/table.hbs').toString()
 const template = hbs.compile(fileContent)
 
-async function generateHtml() {
+async function generateProductHTML() {
     const products = await getProducts()
     
     return template({products: products})
@@ -42,7 +42,7 @@ async function createProduct(product) {
 const productController = {
     getProducts,
     createProduct,
-    generateHtml
+    generateProductHTML
 }
 
 module.exports = productController

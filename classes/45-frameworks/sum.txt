@@ -1,0 +1,21 @@
+Clase 45 - Frameworks I
+
+ADONIS:
+
+    Framework orientada al web basado en Node. Cuenta con un template standard que presenta gran adaptabilidad. Inspirado en un framework de PHP: Laravel. Trae incluido:
+
+        - Un CLI
+        - Autenticacios
+        - Sistema MVC
+        - Login social
+        - Sistema de plantillas
+        - Validaciones
+        - Servidor de sockets y cliente
+        - Soporte para tests
+        - ORM con modelos, migraciones, factorys, y seeds
+
+    Se instala con npm i --global @adonisjs/cli
+
+    En la carpeta donde queremos hacerlos hacemos adonis new my-app
+
+    Entramos a la carpeta y hacemos adonis serve --dev

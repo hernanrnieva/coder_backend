@@ -19,3 +19,26 @@ ADONIS:
     En la carpeta donde queremos hacerlos hacemos adonis new my-app
 
     Entramos a la carpeta y hacemos adonis serve --dev
+
+NEST:
+
+    Basado en node y Express, permite construir un backend en TypeScript o JS con el patrón MVC. Ofrece un poderoso marco de trabajo similar a otros frameworks MVC que existen en otros lenguajes. Cuenta con:
+
+        - Lenguaje tipado
+        - Separación por módulos
+        - Generación automática de entidades a partir de una base de datos
+        - ORM
+        - Construcción de endpoints a través de decoradores
+        - Inyección de dependencias
+
+    Está influenciado por Angular. Cuenta con su propia CLI para generar y facilitarnos las tareas de creación de todos estos elementos
+
+    CLI:
+
+        Fomenta aplicaciones bien estructuradas
+
+    Se instala con npm install @nestjs/cli
+
+    Creo con nest new my-app
+
+    Corro con nest run start:dev

@@ -1,1 +1,9 @@
 Clase 46 - Frameworks II
+
+Sails:
+
+    Framework MVC contruido sobre Express. Se utiliza para desarrollar API RESTful y aplicaciones web modernas. Cuenta con soporte para los requisistos de estas app. Imita el modelo de ruby on rails par la creación de pequeñas o aplicaciones. Provee una capa de abstracción grosa para el tema base de datos
+
+    Trae incorporado el socket.io. Genera rutas automáticamente para sus controladores. Todos los archivos de sus directorios son unificados en único archivo y minificados, para reducir la carga de la página
+
+    npm install sails

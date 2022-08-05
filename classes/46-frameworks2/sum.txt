@@ -7,3 +7,17 @@ Sails:
     Trae incorporado el socket.io. Genera rutas automáticamente para sus controladores. Todos los archivos de sus directorios son unificados en único archivo y minificados, para reducir la carga de la página
 
     npm install sails
+
+Koa:
+
+    Ponele que es un express mejorado. Es desarrollado por los mismos que hicieron express
+
+    - Libre de middlewares
+    - Adiós callbacks
+    - Middlewares en cascada
+    - Manejo de errores
+    - Gran rendimiento
+
+    npm install koa koa-body koa-router
+
+    koa-body es un middleware de boddy parser. Ayuda a crear y responder a solicitudes POST que están disponibles como un campo de formulario o una carga de archivo, etc

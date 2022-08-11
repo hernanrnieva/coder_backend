@@ -1,2 +1,32 @@
 Clase 47 - Deno
 
+Deno:
+
+    Entorno de ejecución de Javascript y Typescript que permite ejecutar código en estos lenguajes fuera del contexto del navegador. Se usa para programación del lado del servidor, pero se puede usar para todo tipo de programas
+
+    Tiene una configuración predeterminada muy potente para Typscript
+
+    Características:
+
+        - Seguro por defecto
+        - Soporte para Typescript
+        - Se envía un solo ejecutable (deno)
+        - Cuenta con utilidades integrados, como un inspector de dependencias y formateador de código
+        - Con junto de módulos estándar previamente auditados
+        - Los scripts pueden ser agrupados en un solo archivo Javascript
+        
+    Deno vs. Node:
+
+        - Es más seguro: cuando se ejecuta un programa en Node, puede hacer lo que quiera en nuestra computadora. Con Deno se puede asignar solamente permisos que sean absolutamente necesarios
+        - No usa npm: Todas las dependencias las instala a través de la URL donde está la dependencia en sí, por lo que es capaz de funcionar sin depender de un repositorio central
+        - Usa los módulos ES6: En lugar de CommonJs como NodeJs, lo hace mucho más cercano al estándar de Javascript
+        - Funciona con promesas: Para gestionar los procesos asíncronos, usa promesas para hacer el código más legible
+        - Ofrece más soporte a las API web
+    
+    Instalación:
+
+        Se instala desde deno.land
+
+    Denon:
+
+        Una especie de Nodemon pero para deno xd. Ampliamente configurable, no se limita a proyectos deno
